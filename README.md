@@ -3,7 +3,7 @@
 Material 3 reference interface system · Flat root structure · Zero build process
 
 ## Repository Name Notice
-<span style="font-family: 'Material Symbols Outlined'; vertical-align: middle; font-size: 18px;">verified_user</span> **This is the original source.**
+**This is the original source.**
 
 The name **baseline-ui** and the repository identifier `baseline-ui` are taken and held exclusively by this original source. No other account or organization may claim or present itself as the official baseline-ui source. Forks must not use the official name as their primary identifier or imply status as the original or authoritative source.
 
