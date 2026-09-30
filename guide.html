@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Usage Guide — Baseline UI Original Source">
+  <title>Usage Guide — Baseline UI</title>
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@400&display=swap">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div class="source-notice">
+    <span class="material-symbols-outlined">verified_user</span>
+    <div>
+      <p class="body-md"><strong>This is the original source.</strong> The repository name baseline-ui is taken and held exclusively by this source.</p>
+    </div>
+  </div>
+
+  <header class="page-header">
+    <h1 class="display-md">Usage Guide</h1>
+    <p class="body-lg" style="margin-top: 8px;">How to start, add pages, and stay compliant</p>
+  </header>
+
+  <main>
+    <section>
+      <h2 class="headline-sm" style="margin-bottom: 16px;">Quick Start</h2>
+      <div class="card-filled" style="margin-bottom: 24px;">
+        <ol style="padding-left: 24px; line-height: 2;">
+          <li>Save all files into one folder — no subfolders</li>
+          <li>Open <code>index.html</code> in any modern browser</li>
+          <li>That's it — no install, no build tools, no command line</li>
+        </ol>
+      </div>
+
+      <h2 class="headline-sm" style="margin-bottom: 16px;">Adding a New Page</h2>
+      <div class="card-filled" style="margin-bottom: 24px;">
+        <p class="body-md" style="margin-bottom: 12px;">Copy <code>index.html</code>, save as <code>new-page.html</code> in the same folder. Update:</p>
+        <ul style="padding-left: 24px; margin-bottom: 16px; line-height: 2;">
+          <li>Page <code>&lt;title&gt;</code> and meta description</li>
+          <li>Main content area — your new material</li>
+          <li>Navigation bar links in <strong>all</strong> pages so they point to the new file</li>
+        </ul>
+        <p class="body-md"><strong>Important:</strong> New displayed text falls under <strong>CC BY-NC-ND</strong> — keep it original, do not copy from elsewhere, no commercial use. Code you write is yours — modify freely.</p>
+      </div>
+
+      <h2 class="headline-sm" style="margin-bottom: 16px;">License Rules At A Glance</h2>
+      <div class="card-filled" style="margin-bottom: 24px;">
+        <table style="width: 100%; border-collapse: collapse;">
+          <tr style="border-bottom: 1px solid var(--md-sys-color-outline-variant);">
+            <th style="text-align: left; padding: 10px;">What</th>
+            <th style="text-align: left; padding: 10px;">You Can</th>
+            <th style="text-align: left; padding: 10px;">You Cannot</th>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--md-sys-color-outline-variant);">
+            <td style="padding: 10px;">Code (.html, .css, .js)</td>
+            <td style="padding: 10px;">Modify, adapt, use commercially</td>
+            <td style="padding: 10px;">Remove original author credit</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--md-sys-color-outline-variant);">
+            <td style="padding: 10px;">Displayed text on pages</td>
+            <td style="padding: 10px;">Read, share with credit</td>
+            <td style="padding: 10px;">Rewrite, monetize, claim as own</td>
+          </tr>
+          <tr>
+            <td style="padding: 10px;">Project identity</td>
+            <td style="padding: 10px;">Link back to original source</td>
+            <td style="padding: 10px;">Claim as your own project</td>
+          </tr>
+        </table>
+      </div>
+
+      <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+        <a href="components.html" class="btn-outlined">← Components</a>
+        <a href="source.html" class="btn-filled">Next: Source & Licenses →</a>
+      </div>
+    </section>
+  </main>
+
+  <nav class="nav-bar">
+    <a href="index.html" class="nav-item">
+      <span class="material-symbols-outlined">home</span>
+      <span class="label-sm">Home</span>
+    </a>
+    <a href="guide.html" class="nav-item active">
+      <span class="material-symbols-outlined">menu_book</span>
+      <span class="label-sm">Guide</span>
+    </a>
+    <a href="source.html" class="nav-item">
+      <span class="material-symbols-outlined">code</span>
+      <span class="label-sm">Source</span>
+    </a>
+    <a href="about.html" class="nav-item">
+      <span class="material-symbols-outlined">info</span>
+      <span class="label-sm">About</span>
+    </a>
+  </nav>
+
+  <script src="main.js"></script>
+</body>
+</html>
