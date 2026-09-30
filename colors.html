@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Color System — Baseline UI Original Source">
+  <title>Color System — Baseline UI</title>
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@400&display=swap">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div class="source-notice">
+    <span class="material-symbols-outlined">verified_user</span>
+    <div>
+      <p class="body-md"><strong>This is the original source.</strong> The repository name baseline-ui is taken and held exclusively by this source.</p>
+    </div>
+  </div>
+
+  <header class="page-header">
+    <h1 class="display-md">Color System</h1>
+    <p class="body-lg" style="margin-top: 8px;">Material 3 palette — light and dark themes</p>
+  </header>
+
+  <main>
+    <section>
+      <h2 class="headline-sm" style="margin-bottom: 16px;">How It Works</h2>
+      <div class="card-filled" style="margin-bottom: 24px;">
+        <p class="body-md" style="margin-bottom: 12px;">All colors live in <code>:root</code> at the top of <code>styles.css</code>. When you change a value there, it updates automatically across the entire site. The palette switches between light and dark based on your system setting — no toggle needed.</p>
+        <p class="body-md">Every combination meets WCAG accessibility standards. Text and background contrast is maintained in both themes.</p>
+      </div>
+
+      <h2 class="headline-sm" style="margin-bottom: 16px;">Palette Reference</h2>
+      <div class="card-filled" style="margin-bottom: 24px;">
+        <h3 class="title-md" style="margin-bottom: 12px;">Primary</h3>
+        <p class="body-md" style="margin-bottom: 8px;">Main brand color — used for buttons, headers, and key actions.</p>
+        <code>--md-sys-color-primary: #415F91</code>
+
+        <h3 class="title-md" style="margin: 20px 0 12px;">Secondary</h3>
+        <p class="body-md" style="margin-bottom: 8px;">Supporting color — navigation, less prominent elements.</p>
+        <code>--md-sys-color-secondary: #565F71</code>
+
+        <h3 class="title-md" style="margin: 20px 0 12px;">Error</h3>
+        <p class="body-md" style="margin-bottom: 8px;">Warnings and critical notices.</p>
+        <code>--md-sys-color-error: #BA1A1A</code>
+
+        <h3 class="title-md" style="margin: 20px 0 12px;">Surface</h3>
+        <p class="body-md" style="margin-bottom: 8px;">Page background and card layers. Several depth levels create visual hierarchy.</p>
+        <code>--md-sys-color-surface: #F9F9FF</code>
+      </div>
+
+      <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+        <a href="index.html" class="btn-outlined">Back Home</a>
+        <a href="fonts.html" class="btn-filled">Next: Font Stack</a>
+      </div>
+    </section>
+  </main>
+
+  <nav class="nav-bar">
+    <a href="index.html" class="nav-item">
+      <span class="material-symbols-outlined">home</span>
+      <span class="label-sm">Home</span>
+    </a>
+    <a href="guide.html" class="nav-item">
+      <span class="material-symbols-outlined">menu_book</span>
+      <span class="label-sm">Guide</span>
+    </a>
+    <a href="source.html" class="nav-item">
+      <span class="material-symbols-outlined">code</span>
+      <span class="label-sm">Source</span>
+    </a>
+    <a href="about.html" class="nav-item">
+      <span class="material-symbols-outlined">info</span>
+      <span class="label-sm">About</span>
+    </a>
+  </nav>
+
+  <script src="main.js"></script>
+</body>
+</html>
