@@ -55,7 +55,7 @@ Full CC BY-NC-ND 4.0 legal text: https://creativecommons.org/licenses/by-nc-nd/4
 ## Compliance
 - WCAG contrast ratios maintained throughout
 - Respects `prefers-reduced-motion` system setting
-- No `!important` overrides in CSS
+- No **`!important`** overrides in CSS
 - No emojis — all indicators use Material Symbols
 
 ## Visit
