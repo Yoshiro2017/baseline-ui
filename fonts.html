@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Font Stack — Baseline UI Original Source">
+  <title>Font Stack — Baseline UI</title>
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@400&display=swap">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div class="source-notice">
+    <span class="material-symbols-outlined">verified_user</span>
+    <div>
+      <p class="body-md"><strong>This is the original source.</strong> The repository name baseline-ui is taken and held exclusively by this source.</p>
+    </div>
+  </div>
+
+  <header class="page-header">
+    <h1 class="display-md">Font Stack</h1>
+    <p class="body-lg" style="margin-top: 8px;">Script assignments and usage rules</p>
+  </header>
+
+  <main>
+    <section>
+      <h2 class="headline-sm" style="margin-bottom: 16px;">Supported Scripts</h2>
+      <div class="card-filled" style="margin-bottom: 24px;">
+        <p class="body-md" style="margin-bottom: 16px;">Only three writing systems are officially supported. This keeps the project focused, fast-loading, and high-quality. No other scripts are included or provided.</p>
+
+        <table style="width: 100%; border-collapse: collapse;">
+          <tr style="border-bottom: 1px solid var(--md-sys-color-outline-variant);">
+            <th style="text-align: left; padding: 10px;">Script</th>
+            <th style="text-align: left; padding: 10px;">Font</th>
+            <th style="text-align: left; padding: 10px;">Applied How</th>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--md-sys-color-outline-variant);">
+            <td style="padding: 10px;"><strong>Latin</strong><br>English, Filipino, etc.</td>
+            <td style="padding: 10px;">Lexend</td>
+            <td style="padding: 10px;">Automatic — no class needed</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--md-sys-color-outline-variant);">
+            <td style="padding: 10px;"><strong>Vietnamese</strong></td>
+            <td style="padding: 10px;">Lexend</td>
+            <td style="padding: 10px;">Built-in diacritics — fully supported automatically</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--md-sys-color-outline-variant);">
+            <td style="padding: 10px;"><strong>Arabic</strong></td>
+            <td style="padding: 10px;">Readex Pro</td>
+            <td style="padding: 10px;">Add <code>class="arabic"</code> → applies right-to-left layout automatically</td>
+          </tr>
+          <tr>
+            <td style="padding: 10px;"><strong>Code / Technical</strong></td>
+            <td style="padding: 10px;">JetBrains Mono</td>
+            <td style="padding: 10px;">Wrap in <code>&lt;code&gt;</code> tag</td>
+          </tr>
+        </table>
+      </div>
+
+      <h2 class="headline-sm" style="margin-bottom: 16px;">Usage Example</h2>
+      <div class="card-filled" style="margin-bottom: 24px;">
+        <pre style="background: var(--md-sys-color-surface-container-low); padding: 12px; border-radius: var(--md-shape-sm); font-family: var(--md-font-mono); font-size: 13px;">&lt;p&gt;Standard Latin text uses Lexend automatically.&lt;/p&gt;
+
+&lt;p&gt;Tiếng Việt also works without any extra classes.&lt;/p&gt;
+
+&lt;p class="arabic"&gt;العربية — apply the class for correct shaping and direction.&lt;/p&gt;
+
+&lt;p&gt;Inline code looks like &lt;code&gt;this&lt;/code&gt;.&lt;/p&gt;</pre>
+      </div>
+
+      <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+        <a href="colors.html" class="btn-outlined">Color System</a>
+        <a href="components.html" class="btn-filled">Next: Components</a>
+      </div>
+    </section>
+  </main>
+
+  <nav class="nav-bar">
+    <a href="index.html" class="nav-item">
+      <span class="material-symbols-outlined">home</span>
+      <span class="label-sm">Home</span>
+    </a>
+    <a href="guide.html" class="nav-item">
+      <span class="material-symbols-outlined">menu_book</span>
+      <span class="label-sm">Guide</span>
+    </a>
+    <a href="source.html" class="nav-item">
+      <span class="material-symbols-outlined">code</span>
+      <span class="label-sm">Source</span>
+    </a>
+    <a href="about.html" class="nav-item">
+      <span class="material-symbols-outlined">info</span>
+      <span class="label-sm">About</span>
+    </a>
+  </nav>
+
+  <script src="main.js"></script>
+</body>
+</html>
