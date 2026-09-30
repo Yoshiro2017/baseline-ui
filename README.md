@@ -1,4 +1,4 @@
-# Baseline UI — Original Source
+# Baseline UI
 
 Material 3 reference interface system · Flat root structure · Zero build process
 
