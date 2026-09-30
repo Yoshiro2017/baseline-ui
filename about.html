@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="About Baseline UI — Original Source">
+  <title>About — Baseline UI</title>
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@400&display=swap">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div class="source-notice">
+    <span class="material-symbols-outlined">verified_user</span>
+    <div>
+      <p class="body-md"><strong>This is the original source.</strong> The repository name baseline-ui is taken and held exclusively by this source.</p>
+    </div>
+  </div>
+
+  <header class="page-header">
+    <h1 class="display-md">About Baseline UI</h1>
+    <p class="body-lg" style="margin-top: 8px;">Purpose, philosophy, and supported languages</p>
+  </header>
+
+  <main>
+    <section>
+      <h2 class="headline-sm" style="margin-bottom: 16px;">Why This Exists</h2>
+      <div class="card-filled" style="margin-bottom: 24px;">
+        <p class="body-md" style="margin-bottom: 12px;">Baseline UI was built to provide a clean, accessible, no-build interface system that works well across multiple languages without unnecessary complexity. No Node.js, no bundlers, no heavy dependencies — just plain files that open in any browser.</p>
+        <p class="body-md">It follows Material 3 design principles but keeps the codebase small, flat, and easy to understand or extend.</p>
+      </div>
+
+      <h2 class="headline-sm" style="margin-bottom: 16px;">Supported Languages & Scripts</h2>
+      <div class="card-filled" style="margin-bottom: 24px;">
+        <p class="body-md" style="margin-bottom: 16px;">Only three writing systems are officially supported. Focusing on a small set ensures high typographic quality and fast page loads.</p>
+        <ul style="padding-left: 24px; line-height: 2;">
+          <li><strong>Latin</strong> — English, Filipino, Spanish, French, and other Western/European languages</li>
+          <li><strong>Vietnamese</strong> — Full diacritic coverage built into Lexend</li>
+          <li><strong>Arabic</strong> — Correct right-to-left layout and glyph shaping via Readex Pro</li>
+        </ul>
+        <p class="body-md" style="margin-top: 16px;">Support for additional scripts is not planned at this time.</p>
+      </div>
+
+      <h2 class="headline-sm" style="margin-bottom: 16px;">Design Rules We Follow</h2>
+      <div class="card-filled" style="margin-bottom: 24px;">
+        <ul style="padding-left: 24px; line-height: 2;">
+          <li>Zero emojis — all icons use Material Symbols</li>
+          <li>No <code>!important</code> overrides in CSS</li>
+          <li>Respect system settings — dark mode and reduced motion</li>
+          <li>WCAG accessible contrast in both themes</li>
+          <li>Everything in root folder — no confusing structure</li>
+        </ul>
+      </div>
+
+      <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+        <a href="source.html" class="btn-outlined">Source & Licenses</a>
+        <a href="index.html" class="btn-filled">Back Home</a>
+      </div>
+    </section>
+  </main>
+
+  <nav class="nav-bar">
+    <a href="index.html" class="nav-item">
+      <span class="material-symbols-outlined">home</span>
+      <span class="label-sm">Home</span>
+    </a>
+    <a href="guide.html" class="nav-item">
+      <span class="material-symbols-outlined">menu_book</span>
+      <span class="label-sm">Guide</span>
+    </a>
+    <a href="source.html" class="nav-item">
+      <span class="material-symbols-outlined">code</span>
+      <span class="label-sm">Source</span>
+    </a>
+    <a href="about.html" class="nav-item active">
+      <span class="material-symbols-outlined">info</span>
+      <span class="label-sm">About</span>
+    </a>
+  </nav>
+
+  <script src="main.js"></script>
+</body>
+</html>
