@@ -6,21 +6,15 @@
   <meta name="description" content="Baseline UI — Original Source · Latin · Vietnamese · Arabic">
   <title>Baseline UI — Original Source</title>
 
-  <!-- Fonts — Only 3 supported scripts, no extras -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;700&display=swap">
-  <!-- ↑ Lexend = Latin + Vietnamese → full built-in diacritic support -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@400;500;700&display=swap">
-  <!-- ↑ Readex Pro = Arabic only → applied via .arabic class -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap">
-  <!-- ↑ JetBrains Mono = code / technical text -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@400&display=swap">
-  <!-- ↑ Icons only → zero emojis anywhere -->
 
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-  <!-- Source Identity Notice -->
   <div class="source-notice">
     <span class="material-symbols-outlined">verified_user</span>
     <div>
@@ -28,7 +22,6 @@
     </div>
   </div>
 
-  <!-- License Restriction Notice -->
   <div class="license-notice">
     <span class="material-symbols-outlined">gavel</span>
     <div>
@@ -39,40 +32,58 @@
     </button>
   </div>
 
-  <!-- Page Header -->
   <header class="page-header">
     <h1 class="display-md">Baseline UI</h1>
     <p class="body-lg" style="margin-top: 8px;">Original Source · Material 3 reference interface system</p>
-    <p class="body-md" style="margin-top: 4px; opacity: 0.8;">Supported: Latin · Vietnamese · Arabic</p>
+    <p class="body-md" style="margin-top: 4px; opacity: 0.8;">Supported scripts: Latin · Vietnamese · Arabic</p>
   </header>
 
-  <!-- Main Content -->
   <main>
     <section>
       <div class="grid">
         <div class="card-filled">
           <span class="material-symbols-outlined icon-lg" style="color: var(--md-sys-color-primary);">palette</span>
           <h2 class="title-lg" style="margin: 12px 0;">Color System</h2>
-          <p class="body-md" style="margin-bottom: 16px;">Centralized palette with automatic light/dark switching following your system preference.</p>
-          <button class="btn-filled">Learn More</button>
+          <p class="body-md" style="margin-bottom: 16px;">Centralized palette with automatic light/dark switching following your system preference. Consistent contrast and accessibility throughout.</p>
+          <a href="colors.html" class="btn-filled">Learn More</a>
         </div>
 
         <div class="card-filled">
           <span class="material-symbols-outlined icon-lg" style="color: var(--md-sys-color-tertiary);">font_download</span>
           <h2 class="title-lg" style="margin: 12px 0;">Font Stack</h2>
-          <p class="body-md" style="margin-bottom: 16px;">Lexend for Latin and Vietnamese. Readex Pro exclusively for Arabic. JetBrains Mono for code.</p>
-          <button class="btn-outlined">View Details</button>
+          <p class="body-md" style="margin-bottom: 16px;">Lexend for Latin and Vietnamese. Readex Pro exclusively for Arabic. JetBrains Mono for code and technical text. Zero emojis — Material Symbols only.</p>
+          <a href="fonts.html" class="btn-outlined">View Details</a>
         </div>
 
         <div class="card-filled">
           <span class="material-symbols-outlined icon-lg" style="color: var(--md-sys-color-secondary);">widgets</span>
           <h2 class="title-lg" style="margin: 12px 0;">Components</h2>
-          <p class="body-md" style="margin-bottom: 16px;">Ready-to-use cards, buttons, navigation — consistent spacing, rounded corners, smooth interaction states.</p>
-          <code>no build tools</code>
+          <p class="body-md" style="margin-bottom: 16px;">Ready-to-use cards, buttons, navigation, forms — consistent spacing, rounded corners, smooth hover and active states. Drop in, no build tools needed.</p>
+          <a href="components.html" class="btn-outlined">Explore Components</a>
+        </div>
+
+        <div class="card-filled">
+          <span class="material-symbols-outlined icon-lg" style="color: var(--md-sys-color-primary);">article</span>
+          <h2 class="title-lg" style="margin: 12px 0;">Usage Guide</h2>
+          <p class="body-md" style="margin-bottom: 16px;">Step-by-step instructions: how to start, add pages, follow license rules, and extend the system properly.</p>
+          <a href="guide.html" class="btn-filled">Read Guide</a>
+        </div>
+
+        <div class="card-filled">
+          <span class="material-symbols-outlined icon-lg" style="color: var(--md-sys-color-tertiary);">description</span>
+          <h2 class="title-lg" style="margin: 12px 0;">Source & Licenses</h2>
+          <p class="body-md" style="margin-bottom: 16px;">File structure, what each license covers, allowed uses, and attribution requirements. Know your rights and responsibilities.</p>
+          <a href="source.html" class="btn-outlined">View Terms</a>
+        </div>
+
+        <div class="card-filled">
+          <span class="material-symbols-outlined icon-lg" style="color: var(--md-sys-color-secondary);">info</span>
+          <h2 class="title-lg" style="margin: 12px 0;">About This Project</h2>
+          <p class="body-md" style="margin-bottom: 16px;">Purpose, design philosophy, supported scripts, and who maintains the original source.</p>
+          <a href="about.html" class="btn-filled">Learn About Us</a>
         </div>
       </div>
 
-      <!-- Script Demo -->
       <div class="script-demo">
         Supported scripts demonstration:<br>
         Tiếng Việt · English · <span class="arabic">العربية</span>
@@ -80,7 +91,6 @@
     </section>
   </main>
 
-  <!-- Bottom Navigation Bar -->
   <nav class="nav-bar">
     <a href="index.html" class="nav-item active">
       <span class="material-symbols-outlined">home</span>
