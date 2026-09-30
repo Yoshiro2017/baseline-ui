@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Baseline UI — Original Source · Latin · Vietnamese · Arabic">
+  <title>Baseline UI — Original Source</title>
+
+  <!-- Fonts — Only 3 supported scripts, no extras -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;700&display=swap">
+  <!-- ↑ Lexend = Latin + Vietnamese → full built-in diacritic support -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@400;500;700&display=swap">
+  <!-- ↑ Readex Pro = Arabic only → applied via .arabic class -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap">
+  <!-- ↑ JetBrains Mono = code / technical text -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@400&display=swap">
+  <!-- ↑ Icons only → zero emojis anywhere -->
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Source Identity Notice -->
+  <div class="source-notice">
+    <span class="material-symbols-outlined">verified_user</span>
+    <div>
+      <p class="body-md"><strong>This is the original source.</strong> The repository name baseline-ui is taken and held exclusively by this source. Forks must not claim this name as their primary identity.</p>
+    </div>
+  </div>
+
+  <!-- License Restriction Notice -->
+  <div class="license-notice">
+    <span class="material-symbols-outlined">gavel</span>
+    <div>
+      <p class="body-md"><strong>Displayed content: CC BY-NC-ND 4.0.</strong> No adaptations permitted. No commercial use. Cannot rewrite or present as own work. <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener noreferrer">Full license</a></p>
+    </div>
+    <button class="btn-outlined icon-sm" data-dismiss=".license-notice" style="margin-left: auto; padding: 6px 12px;">
+      <span class="material-symbols-outlined">close</span>
+    </button>
+  </div>
+
+  <!-- Page Header -->
+  <header class="page-header">
+    <h1 class="display-md">Baseline UI</h1>
+    <p class="body-lg" style="margin-top: 8px;">Original Source · Material 3 reference interface system</p>
+    <p class="body-md" style="margin-top: 4px; opacity: 0.8;">Supported: Latin · Vietnamese · Arabic</p>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <section>
+      <div class="grid">
+        <div class="card-filled">
+          <span class="material-symbols-outlined icon-lg" style="color: var(--md-sys-color-primary);">palette</span>
+          <h2 class="title-lg" style="margin: 12px 0;">Color System</h2>
+          <p class="body-md" style="margin-bottom: 16px;">Centralized palette with automatic light/dark switching following your system preference.</p>
+          <button class="btn-filled">Learn More</button>
+        </div>
+
+        <div class="card-filled">
+          <span class="material-symbols-outlined icon-lg" style="color: var(--md-sys-color-tertiary);">font_download</span>
+          <h2 class="title-lg" style="margin: 12px 0;">Font Stack</h2>
+          <p class="body-md" style="margin-bottom: 16px;">Lexend for Latin and Vietnamese. Readex Pro exclusively for Arabic. JetBrains Mono for code.</p>
+          <button class="btn-outlined">View Details</button>
+        </div>
+
+        <div class="card-filled">
+          <span class="material-symbols-outlined icon-lg" style="color: var(--md-sys-color-secondary);">widgets</span>
+          <h2 class="title-lg" style="margin: 12px 0;">Components</h2>
+          <p class="body-md" style="margin-bottom: 16px;">Ready-to-use cards, buttons, navigation — consistent spacing, rounded corners, smooth interaction states.</p>
+          <code>no build tools</code>
+        </div>
+      </div>
+
+      <!-- Script Demo -->
+      <div class="script-demo">
+        Supported scripts demonstration:<br>
+        Tiếng Việt · English · <span class="arabic">العربية</span>
+      </div>
+    </section>
+  </main>
+
+  <!-- Bottom Navigation Bar -->
+  <nav class="nav-bar">
+    <a href="index.html" class="nav-item active">
+      <span class="material-symbols-outlined">home</span>
+      <span class="label-sm">Home</span>
+    </a>
+    <a href="guide.html" class="nav-item">
+      <span class="material-symbols-outlined">menu_book</span>
+      <span class="label-sm">Guide</span>
+    </a>
+    <a href="source.html" class="nav-item">
+      <span class="material-symbols-outlined">code</span>
+      <span class="label-sm">Source</span>
+    </a>
+    <a href="about.html" class="nav-item">
+      <span class="material-symbols-outlined">info</span>
+      <span class="label-sm">About</span>
+    </a>
+  </nav>
+
+  <script src="main.js"></script>
+</body>
+</html>
