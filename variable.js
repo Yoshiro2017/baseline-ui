@@ -1,5 +1,7 @@
 // Baseline UI — Variable Font Playground Parser
-// Rules: /cmd FIRST-TOKEN = hidden setting; REST = visible text
+// ✅ Rules: /cmd FIRST-TOKEN = hidden setting; ALL REMAINDER = visible text
+// ✅ /font = consumes ALL consecutive words as name; rest = visible
+// ✅ /normal = hidden, no output
 // License: MIT License
 
 (function () {
@@ -11,7 +13,6 @@
   const clearBtn  = document.getElementById('vfp-clear');
   const sampleBtn = document.getElementById('vfp-sample');
 
-  // Default state — MONO = 0 (proportional)
   const defaultState = {
     font: 'Google Sans Flex',
     wght: 400,
@@ -49,152 +50,116 @@ Here you can experiment with variable axes.
 /ital 1 Italic style · /ital 0 Roman style
 /normal`;
 
-  function resetState() {
-    return Object.assign({}, defaultState);
-  }
+  function resetState() { return Object.assign({}, defaultState); }
 
   function buildVariationCSS(state) {
-    const parts = [];
-    if (state.wght !== undefined) parts.push(`"wght" ${state.wght}`);
-    if (state.wdth !== undefined) parts.push(`"wdth" ${state.wdth}`);
-    if (state.opsz !== undefined) parts.push(`"opsz" ${state.opsz}`);
-    if (state.slnt !== undefined) parts.push(`"slnt" ${state.slnt}`);
-    if (state.ital !== undefined) parts.push(`"ital" ${state.ital}`);
-    if (state.GRAD !== undefined) parts.push(`"GRAD" ${state.GRAD}`);
-    if (state.ROND !== undefined) parts.push(`"ROND" ${state.ROND}`);
-    if (state.MONO !== undefined) parts.push(`"MONO" ${state.MONO}`);
-    if (state.HEXP !== undefined) parts.push(`"HEXP" ${state.HEXP}`);
-    return parts.join(', ');
+    const p = [];
+    if (state.wght !== undefined) p.push(`"wght" ${state.wght}`);
+    if (state.wdth !== undefined) p.push(`"wdth" ${state.wdth}`);
+    if (state.opsz !== undefined) p.push(`"opsz" ${state.opsz}`);
+    if (state.slnt !== undefined) p.push(`"slnt" ${state.slnt}`);
+    if (state.ital !== undefined) p.push(`"ital" ${state.ital}`);
+    if (state.GRAD !== undefined) p.push(`"GRAD" ${state.GRAD}`);
+    if (state.ROND !== undefined) p.push(`"ROND" ${state.ROND}`);
+    if (state.MONO !== undefined) p.push(`"MONO" ${state.MONO}`);
+    if (state.HEXP !== undefined) p.push(`"HEXP" ${state.HEXP}`);
+    return p.join(', ');
   }
 
-  function escapeHTML(str) {
-    return str
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;');
+  function escapeHTML(s) {
+    return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(>/g,'&gt;');
   }
 
-  // Apply current style to text and append to output
-  function renderSpan(text, state, output) {
-    if (!text) return;
-    const css = buildVariationCSS(state);
-    output.push(`<span style="font-family:'${state.font}';font-variation-settings:${css};">${escapeHTML(text)}</span>`);
+  function span(text, state) {
+    if (!text.trim()) return '';
+    return `<span style="font-family:'${state.font}';font-variation-settings:${buildVariationCSS(state)};">${escapeHTML(text)}</span>`;
   }
 
-  // Parse: /cmd → take FIRST token as value (hidden), rest = visible
   function parseAndRender(input) {
     let state = resetState();
-    const output = [];
+    const out = [];
 
-    // Split by commands: capture each /cmd block separately
-    const segments = input.split(/(\/\w+(?:\s+[^\s/]+(?:\s+[^\s/]+)*)?)/g);
+    // Split into: plain text | /command blocks
+    const parts = input.split(/(\/\w+(?:\s+[^/]*)?)/g);
 
-    for (const seg of segments) {
-      if (!seg) continue;
+    for (const part of parts) {
+      if (!part) continue;
 
-      // Command block found
-      const cmdMatch = seg.match(/^\/(\w+)(?:\s+([^\s/]+)(?:\s+(.*))?)?$/s);
-      if (cmdMatch) {
-        const cmd  = cmdMatch[1].toLowerCase();
-        const arg1 = cmdMatch[2] || '';  // FIRST token = value (hidden)
-        const rest = cmdMatch[3] || '';  // Everything else = visible text
+      // Is this a command block?
+      const cmd = part.match(/^\/(\w+)(?:\s+(.*))?$/s);
+      if (!cmd) {
+        // Plain text → render directly
+        out.push(span(part, state));
+        continue;
+      }
 
-        switch (cmd) {
-          case 'font':
-            if (arg1) state.font = arg1 + (rest ? '' : '');
-            // For font: multiple words = full font name
-            const fontMatch = seg.match(/^\/font\s+(.+?)(?:\s*\n|\s*$)/);
-            if (fontMatch) {
-              const nameParts = fontMatch[1].split(/\s+/);
-              // Font name = ALL consecutive words before newline or next /cmd
-              const fullName = nameParts[0];
-              // Actually capture multi-word font name properly
-              const fullMatch = seg.match(/^\/font\s+([^/]+?)(?:\s*\n|\s+(?=.)|$)/);
-              if (fullMatch) {
-                const nameAndText = fullMatch[1].trim().split(/\s+(?=[^\s/]+$)/);
-                // Re-split: consume until we hit text that doesn't look like font name
-                const parts = seg.replace(/^\/font\s+/, '').split(/\s+/);
-                let nameEnd = 0;
-                const candidateFont = [];
-                for (const word of parts) {
-                  if (/^[A-Z]/.test(word) || candidateFont.length > 0 && /^(Sans|Code|Pro|Flex|Mono)$/.test(word)) {
-                    candidateFont.push(word);
-                    nameEnd++;
-                  } else break;
-                }
-                if (candidateFont.length > 0) {
-                  state.font = candidateFont.join(' ');
-                  const visibleText = parts.slice(nameEnd).join(' ');
-                  renderSpan(visibleText, state, output);
-                }
-              }
-            }
-            // Font commands handled above — skip default
-            continue;
+      const name = cmd[1].toLowerCase();
+      const args = (cmd[2] || '').trim();
 
-          case 'normal':
-            state = resetState();
-            // COMPLETELY HIDDEN — no output
-            continue;
+      // Special: /font → consume ALL consecutive words as font name
+      if (name === 'font') {
+        if (!args) continue;
+        const words = args.split(/\s+/);
+        let fontName = '';
+        let visibleStart = 0;
 
-          // Numeric axes — arg1 = number, rest = visible text
-          case 'wght': case 'weight':
-            if (arg1) state.wght = parseFloat(arg1);
-            renderSpan(rest, state, output);
-            continue;
-          case 'wdth':
-            if (arg1) state.wdth = parseFloat(arg1);
-            renderSpan(rest, state, output);
-            continue;
-          case 'opsz':
-            if (arg1) state.opsz = parseFloat(arg1);
-            renderSpan(rest, state, output);
-            continue;
-          case 'slnt':
-            if (arg1) state.slnt = parseFloat(arg1);
-            renderSpan(rest, state, output);
-            continue;
-          case 'ital':
-            if (arg1) state.ital = parseFloat(arg1);
-            renderSpan(rest, state, output);
-            continue;
-          case 'grad':
-            if (arg1) state.GRAD = parseFloat(arg1);
-            renderSpan(rest, state, output);
-            continue;
-          case 'rond':
-            if (arg1) state.ROND = parseFloat(arg1);
-            renderSpan(rest, state, output);
-            continue;
-          case 'mono':
-            if (arg1) state.MONO = parseFloat(arg1);
-            renderSpan(rest, state, output);
-            continue;
-          case 'hexp':
-            if (arg1) state.HEXP = parseFloat(arg1);
-            renderSpan(rest, state, output);
-            continue;
+        // Consume words until we hit something that looks like content
+        for (let i = 0; i < words.length; i++) {
+          const w = words[i];
+          // Font name pattern: capitalized words or known fragments
+          if (/^[A-Z][a-z]+$/.test(w) || /^(Sans|Code|Flex|Pro|Mono|Lexend|Roboto|Google)$/.test(w) || !visibleStart) {
+            fontName += (fontName ? ' ' : '') + w;
+            visibleStart = i + 1;
+          } else {
+            break;
+          }
+        }
+
+        if (fontName) state.font = fontName;
+        const rest = words.slice(visibleStart).join(' ');
+        out.push(span(rest, state));
+        continue;
+      }
+
+      // Special: /normal → hidden, no output
+      if (name === 'normal') {
+        state = resetState();
+        continue;
+      }
+
+      // Numeric axes: FIRST token = value, REST = visible text
+      const tokens = args.match(/^(\S+)(?:\s+(.*))?$/s);
+      if (!tokens) continue;
+
+      const valStr = tokens[1];
+      const restText = tokens[2] || '';
+
+      // Apply value if numeric
+      const num = parseFloat(valStr);
+      if (!isNaN(num)) {
+        switch (name) {
+          case 'wght': case 'weight': state.wght = num; break;
+          case 'wdth': state.wdth = num; break;
+          case 'opsz': state.opsz = num; break;
+          case 'slnt': state.slnt = num; break;
+          case 'ital': state.ital = num; break;
+          case 'grad': state.GRAD = num; break;
+          case 'rond': state.ROND = num; break;
+          case 'mono': state.MONO = num; break;
+          case 'hexp': state.HEXP = num; break;
         }
       }
 
-      // Plain text — render as-is
-      renderSpan(seg, state, output);
+      // Everything after first token = visible text
+      out.push(span(restText, state));
     }
 
-    outputEl.innerHTML = output.join('').replace(/\n/g, '<br>');
+    outputEl.innerHTML = out.join('').replace(/\n/g, '<br>');
   }
 
-  function renderPreview() {
-    parseAndRender(inputEl.value);
-  }
-  function clearAll() {
-    inputEl.value = '';
-    outputEl.innerHTML = 'Type something and click Update Preview';
-  }
-  function loadSample() {
-    inputEl.value = sampleText;
-    renderPreview();
-  }
+  function renderPreview() { parseAndRender(inputEl.value); }
+  function clearAll() { inputEl.value = ''; outputEl.innerHTML = 'Type something and click Update Preview'; }
+  function loadSample() { inputEl.value = sampleText; renderPreview(); }
 
   if (renderBtn && inputEl && outputEl) {
     renderBtn.addEventListener('click', renderPreview);
