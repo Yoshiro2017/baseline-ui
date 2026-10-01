@@ -1,0 +1,86 @@
+/* Baseline UI — VFP Page-Specific Styles
+ * Applies only to vfp.html
+ * License: MIT License
+ */
+
+/* Input textarea */
+.vfp-textarea {
+  width: 100%;
+  min-height: 160px;
+  padding: 14px 16px;
+  border: 1px solid var(--md-sys-color-outline);
+  border-radius: var(--radius-md);
+  font-family: var(--font-mono);
+  font-size: var(--font-base);
+  line-height: 1.6;
+  background-color: var(--md-sys-color-surface);
+  color: var(--md-sys-color-on-surface);
+  resize: vertical;
+  box-sizing: border-box;
+  margin: 8px 0 16px;
+}
+
+.vfp-textarea:focus {
+  outline: 2px solid var(--md-sys-color-primary);
+  outline-offset: -1px;
+  border-color: var(--md-sys-color-primary);
+}
+
+/* Preview output area */
+.vfp-output {
+  min-height: 120px;
+  padding: 16px;
+  border-radius: var(--radius-md);
+  background-color: var(--md-sys-color-surface-variant);
+  color: var(--md-sys-color-on-surface);
+  line-height: 1.8;
+  margin: 8px 0;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* Command row button container */
+.vfp-btn-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 12px 0 20px;
+}
+
+/* Syntax example block */
+.vfp-example {
+  font-family: var(--font-mono);
+  background-color: rgba(0,0,0,0.04);
+  padding: 12px 16px;
+  border-radius: var(--radius-sm);
+  font-size: var(--font-sm);
+  line-height: 1.8;
+  margin: 12px 0;
+  overflow-x: auto;
+}
+
+/* Axis table spacing */
+.vfp-axis-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 12px;
+}
+
+.vfp-axis-table th,
+.vfp-axis-table td {
+  padding: 10px 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--md-sys-color-outline-variant);
+}
+
+.vfp-axis-table th {
+  font-weight: 600;
+  background-color: rgba(0,0,0,0.04);
+}
+
+/* Note text below preview */
+.vfp-note {
+  font-size: var(--font-sm);
+  color: var(--md-sys-color-on-surface-variant);
+  margin-top: 8px;
+}
