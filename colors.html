@@ -3,60 +3,170 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Color System — Baseline UI Original Source">
-  <title>Color System — Baseline UI</title>
+  <meta name="description" content="Colors — Material 3 palette, tokens, and usage rules">
+  <title>Colors · Baseline UI</title>
 
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;700&display=swap">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@400;500;700&display=swap">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap">
+  <!-- Core fonts only -->
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Code:ital,wght,MONO@0,300..800,0..1;1,300..800,0..1&family=Google+Sans+Flex:opsz,slnt,wdth,wght,GRAD,ROND@6..144,-10..0,25..151,1..1000,0..100,0..100&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@400&display=swap">
-
   <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Page-specific swatch styles — kept minimal here; core variables in styles.css */
+    .color-swatch {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 16px;
+      border-radius: 8px;
+      margin: 8px 0;
+    }
+    .swatch-block {
+      width: 48px;
+      height: 48px;
+      border-radius: 4px;
+      border: 1px solid rgba(0,0,0,0.12);
+      flex-shrink: 0;
+    }
+    .swatch-info {
+      flex: 1;
+    }
+    .swatch-name {
+      font-weight: 600;
+      margin: 0;
+    }
+    .swatch-value {
+      font-family: var(--md-font-mono);
+      font-size: 0.875rem;
+      opacity: 0.75;
+      margin: 2px 0 0;
+    }
+  </style>
 </head>
 <body>
 
   <div class="source-notice">
     <span class="material-symbols-outlined">verified_user</span>
     <div>
-      <p class="body-md"><strong>This is the original source.</strong> The repository name baseline-ui is taken and held exclusively by this source.</p>
+      <p class="body-md"><strong>This is the original source.</strong> The name "baseline-ui" is reserved by this repository. Forks must not claim this name as their primary identity.</p>
+    </div>
+  </div>
+
+  <div class="license-notice">
+    <span class="material-symbols-outlined">gavel</span>
+    <div>
+      <p class="body-md"><strong>Protected content.</strong> Page text: CC BY-NC-ND 4.0 — no adaptations, no commercial use.</p>
     </div>
   </div>
 
   <header class="page-header">
-    <h1 class="display-md">Color System</h1>
-    <p class="body-lg" style="margin-top: 8px;">Material 3 palette — light and dark themes</p>
+    <h1 class="display-4xl">Color System</h1>
+    <p class="body-lg" style="margin-top: 12px;">Material 3 palette, CSS variables, and application rules</p>
   </header>
 
   <main>
     <section>
-      <h2 class="headline-sm" style="margin-bottom: 16px;">How It Works</h2>
-      <div class="card-filled" style="margin-bottom: 24px;">
-        <p class="body-md" style="margin-bottom: 12px;">All colors live in <code>:root</code> at the top of <code>styles.css</code>. When you change a value there, it updates automatically across the entire site. The palette switches between light and dark based on your system setting — no toggle needed.</p>
-        <p class="body-md">Every combination meets WCAG accessibility standards. Text and background contrast is maintained in both themes.</p>
+      <h2 class="headline-lg">Palette Philosophy</h2>
+      <div class="card-filled">
+        <p>This project follows the Material 3 colour system with a fixed light-theme baseline. All values are defined as CSS custom properties in <code>styles.css</code> within the <code>:root</code> block — change them once and the entire site updates consistently.</p>
+        <p>Accessibility is built in: text-on-surface contrast meets WCAG AA minimums by default. Do not lower contrast below these values.</p>
       </div>
 
-      <h2 class="headline-sm" style="margin-bottom: 16px;">Palette Reference</h2>
-      <div class="card-filled" style="margin-bottom: 24px;">
-        <h3 class="title-md" style="margin-bottom: 12px;">Primary</h3>
-        <p class="body-md" style="margin-bottom: 8px;">Main brand color — used for buttons, headers, and key actions.</p>
-        <code>--md-sys-color-primary: #415F91</code>
+      <h2 class="headline-lg">Core Palette</h2>
 
-        <h3 class="title-md" style="margin: 20px 0 12px;">Secondary</h3>
-        <p class="body-md" style="margin-bottom: 8px;">Supporting color — navigation, less prominent elements.</p>
-        <code>--md-sys-color-secondary: #565F71</code>
-
-        <h3 class="title-md" style="margin: 20px 0 12px;">Error</h3>
-        <p class="body-md" style="margin-bottom: 8px;">Warnings and critical notices.</p>
-        <code>--md-sys-color-error: #BA1A1A</code>
-
-        <h3 class="title-md" style="margin: 20px 0 12px;">Surface</h3>
-        <p class="body-md" style="margin-bottom: 8px;">Page background and card layers. Several depth levels create visual hierarchy.</p>
-        <code>--md-sys-color-surface: #F9F9FF</code>
+      <h3 class="title-xl">Primary & Action</h3>
+      <div class="color-swatch" style="background-color: #6750a4; color: #fff;">
+        <div class="swatch-block" style="background-color: #6750a4;"></div>
+        <div class="swatch-info">
+          <p class="swatch-name">Primary</p>
+          <p class="swatch-value">--md-sys-color-primary · #6750a4</p>
+        </div>
+      </div>
+      <div class="color-swatch" style="background-color: #ffffff; color: #1c1b1f;">
+        <div class="swatch-block" style="background-color: #ffffff; border-color: #ddd;"></div>
+        <div class="swatch-info">
+          <p class="swatch-name">On Primary</p>
+          <p class="swatch-value">--md-sys-color-on-primary · #ffffff</p>
+        </div>
       </div>
 
-      <div style="display: flex; gap: 12px; flex-wrap: wrap;">
-        <a href="index.html" class="btn-outlined">Back Home</a>
-        <a href="fonts.html" class="btn-filled">Next: Font Stack</a>
+      <h3 class="title-xl">Surface & Background</h3>
+      <div class="color-swatch" style="background-color: #fffbfe; color: #1c1b1f;">
+        <div class="swatch-block" style="background-color: #fffbfe; border-color: #ddd;"></div>
+        <div class="swatch-info">
+          <p class="swatch-name">Surface</p>
+          <p class="swatch-value">--md-sys-color-surface · #fffbfe</p>
+        </div>
+      </div>
+      <div class="color-swatch" style="background-color: #e7e0eb; color: #1c1b1f;">
+        <div class="swatch-block" style="background-color: #e7e0eb;"></div>
+        <div class="swatch-info">
+          <p class="swatch-name">Surface Variant</p>
+          <p class="swatch-value">--md-sys-color-surface-variant · #e7e0eb</p>
+        </div>
+      </div>
+      <div class="color-swatch" style="background-color: #1c1b1f; color: #ffffff;">
+        <div class="swatch-block" style="background-color: #1c1b1f;"></div>
+        <div class="swatch-info">
+          <p class="swatch-name">On Surface</p>
+          <p class="swatch-value">--md-sys-color-on-surface · #1c1b1f</p>
+        </div>
+      </div>
+      <div class="color-swatch" style="background-color: #49454f; color: #ffffff;">
+        <div class="swatch-block" style="background-color: #49454f;"></div>
+        <div class="swatch-info">
+          <p class="swatch-name">On Surface Variant</p>
+          <p class="swatch-value">--md-sys-color-on-surface-variant · #49454f</p>
+        </div>
+      </div>
+
+      <h3 class="title-xl">Borders & Dividers</h3>
+      <div class="color-swatch" style="background-color: #79747e; color: #ffffff;">
+        <div class="swatch-block" style="background-color: #79747e;"></div>
+        <div class="swatch-info">
+          <p class="swatch-name">Outline</p>
+          <p class="swatch-value">--md-sys-color-outline · #79747e</p>
+        </div>
+      </div>
+      <div class="color-swatch" style="background-color: #c4c0c9; color: #1c1b1f;">
+        <div class="swatch-block" style="background-color: #c4c0c9;"></div>
+        <div class="swatch-info">
+          <p class="swatch-name">Outline Variant</p>
+          <p class="swatch-value">--md-sys-color-outline-variant · #c4c0c9</p>
+        </div>
+      </div>
+
+      <h3 class="title-xl">Accent Containers</h3>
+      <div class="color-swatch" style="background-color: #e8def8; color: #1d192b;">
+        <div class="swatch-block" style="background-color: #e8def8; border-color: #ddd;"></div>
+        <div class="swatch-info">
+          <p class="swatch-name">Secondary Container</p>
+          <p class="swatch-value">--md-sys-color-secondary-container · #e8def8</p>
+        </div>
+      </div>
+
+      <h2 class="headline-lg">Usage Rules</h2>
+      <div class="card-filled">
+        <ul>
+          <li><strong>Always reference variables</strong> — use <code>var(--md-sys-color-primary)</code> instead of hardcoding hex values. This keeps changes consistent.</li>
+          <li><strong>Layer correctly</strong> — place cards and raised elements on Surface Variant or Secondary Container, never pure white.</li>
+          <li><strong>Text hierarchy</strong> — headings: On Surface; body: On Surface; secondary/tertiary labels: On Surface Variant.</li>
+          <li><strong>Do not add !important</strong> — specificity is kept low so overrides work predictably.</li>
+          <li><strong>Notice backgrounds</strong> — Source notice uses light blue tint; Licence notice uses amber tint; these are page-level exceptions and not part of the core palette.</li>
+        </ul>
+      </div>
+
+      <h2 class="headline-lg">Dark Theme (Planned)</h2>
+      <div class="card-filled">
+        <p>Dark mode is not implemented in this version. When added, it will be done via a media-query or body-class override in <code>styles.css</code> — no new HTML files will be needed.</p>
+      </div>
+
+      <div class="nav-links">
+        <a href="index.html" class="btn-outlined">&larr; Back Home</a>
+        <a href="guide.html" class="btn-outlined">&larr; Guide</a>
+        <a href="components.html" class="btn-filled">
+          <span class="material-symbols-outlined" style="font-size: 20px;">widgets</span>
+          Components
+        </a>
       </div>
     </section>
   </main>
@@ -66,17 +176,21 @@
       <span class="material-symbols-outlined">home</span>
       <span class="label-sm">Home</span>
     </a>
+    <a href="vfp.html" class="nav-item">
+      <span class="material-symbols-outlined">text_fields</span>
+      <span class="label-sm">VFP</span>
+    </a>
     <a href="guide.html" class="nav-item">
       <span class="material-symbols-outlined">menu_book</span>
       <span class="label-sm">Guide</span>
     </a>
-    <a href="source.html" class="nav-item">
-      <span class="material-symbols-outlined">code</span>
-      <span class="label-sm">Source</span>
+    <a href="colors.html" class="nav-item active">
+      <span class="material-symbols-outlined">palette</span>
+      <span class="label-sm">Colors</span>
     </a>
-    <a href="about.html" class="nav-item">
-      <span class="material-symbols-outlined">info</span>
-      <span class="label-sm">About</span>
+    <a href="components.html" class="nav-item">
+      <span class="material-symbols-outlined">widgets</span>
+      <span class="label-sm">Components</span>
     </a>
   </nav>
 
