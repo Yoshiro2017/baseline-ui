@@ -73,67 +73,73 @@ Here you can experiment with variable axes.
   // Parse input text → HTML with styled spans
   function parseAndRender(input) {
     let state = resetState();
-    // Split on newlines while preserving line structure
+    // Split preserving newlines
     const lines = input.split('\n');
     const outputFragments = [];
 
     for (const line of lines) {
-      // Split line into tokens: commands and plain text
-      const tokens = line.split(/(\/[a-z]+\s+[^\/]*)/g);
+      // Match: /command [args] — capture command separately from following text
+      // This regex splits: command block | plain text
+      const segments = line.split(/(\/\w+(?:\s+[^\/\n]*)?)/g);
 
-      for (const token of tokens) {
-        if (!token.trim()) continue;
+      for (const seg of segments) {
+        const trimmed = seg.trim();
+        if (!trimmed) continue;
 
-        // Command pattern: /name value
-        const cmdMatch = token.match(/^\/([a-zA-Z]+)\s+(.*)$/);
+        // Is this a command?
+        const cmdMatch = trimmed.match(/^\/([a-zA-Z]+)(?:\s+(.*))?$/);
         if (cmdMatch) {
-          const cmd  = cmdMatch[1].toLowerCase();
-          const arg  = cmdMatch[2].trim();
+          const cmd = cmdMatch[1].toLowerCase();
+          const arg = (cmdMatch[2] || '').trim();
 
           switch (cmd) {
             case 'font':
-              state.font = arg;
+              if (arg) state.font = arg;
               break;
             case 'normal':
               state = resetState();
-              break;
+              // Do NOT output anything — /normal is invisible
+              continue;
             case 'wght':
             case 'weight':
-              state.wght = parseFloat(arg);
+              if (arg) state.wght = parseFloat(arg);
               break;
             case 'wdth':
-              state.wdth = parseFloat(arg);
+              if (arg) state.wdth = parseFloat(arg);
               break;
             case 'opsz':
-              state.opsz = parseFloat(arg);
+              if (arg) state.opsz = parseFloat(arg);
               break;
             case 'slnt':
-              state.slnt = parseFloat(arg);
+              if (arg) state.slnt = parseFloat(arg);
               break;
             case 'ital':
-              state.ital = parseFloat(arg);
+              if (arg) state.ital = parseFloat(arg);
               break;
             case 'grad':
-              state.GRAD = parseFloat(arg);
+              if (arg) state.GRAD = parseFloat(arg);
               break;
             case 'rond':
-              state.ROND = parseFloat(arg);
+              if (arg) state.ROND = parseFloat(arg);
               break;
             case 'mono':
-              state.MONO = parseFloat(arg);
+              if (arg) state.MONO = parseFloat(arg);
               break;
             case 'hexp':
-              state.HEXP = parseFloat(arg);
+              if (arg) state.HEXP = parseFloat(arg);
               break;
           }
-        } else {
-          // Plain text — wrap in styled span
-          const css = buildVariationCSS(state);
-          const span = `<span style="font-family: '${state.font}', var(--font-sans); font-variation-settings: ${css};">${escapeHTML(token)}</span>`;
-          outputFragments.push(span);
+          // Commands with NO argument produce no visible output
+          if (!arg) continue;
         }
+
+        // Plain text OR argument text — render it
+        const css = buildVariationCSS(state);
+        const safeText = escapeHTML(seg);
+        outputFragments.push(
+          `<span style="font-family: '${state.font}', var(--font-sans); font-variation-settings: ${css};">${safeText}</span>`
+        );
       }
-      // Preserve line breaks
       outputFragments.push('<br>');
     }
 
@@ -163,13 +169,12 @@ Here you can experiment with variable axes.
     renderPreview();
   }
 
-  // Attach listeners only if elements exist (vfp.html only)
+  // Attach listeners only if elements exist
   if (renderBtn && inputEl && outputEl) {
     renderBtn.addEventListener('click', renderPreview);
     clearBtn.addEventListener('click', clearAll);
     sampleBtn.addEventListener('click', loadSample);
 
-    // Auto-render on initial load
     parseAndRender('Type text above or click Load Example to begin.');
   }
 })();
