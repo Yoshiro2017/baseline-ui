@@ -1,27 +1,54 @@
 // Baseline UI — Base Site Scripts
-// Applies to all pages; minimal shared behaviour
+// Theme: light/dark with localStorage persistence
 // License: MIT License
 
 (function () {
   'use strict';
 
-  // Confirm page matches nav item — helps catch copy-paste errors
-  const currentPath = window.location.pathname.split('/').pop() || 'index.html';
-  document.querySelectorAll('.nav-bar .nav-item').forEach(item => {
-    const href = item.getAttribute('href');
-    if (href === currentPath) {
-      item.classList.add('active');
+  // === THEME SYSTEM ===
+  const STORAGE_KEY = 'baseline-theme';
+
+  function getPreferredTheme() {
+    const stored = localStorage.getItem(STORAGE_KEY);
+    if (stored) return stored;
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  }
+
+  function applyTheme(theme) {
+    if (theme === 'dark') {
+      document.documentElement.classList.add('dark');
     } else {
-      item.classList.remove('active');
+      document.documentElement.classList.remove('dark');
     }
+    localStorage.setItem(STORAGE_KEY, theme);
+    updateThemeButton(theme);
+  }
+
+  function toggleTheme() {
+    applyTheme(document.documentElement.classList.contains('dark') ? 'light' : 'dark');
+  }
+
+  function updateThemeButton(theme) {
+    const btn = document.getElementById('theme-toggle-btn');
+    if (!btn) return;
+    btn.innerHTML = theme === 'dark'
+      ? '<span class="material-symbols-outlined" style="font-size:18px;">light_mode</span> Light'
+      : '<span class="material-symbols-outlined" style="font-size:18px;">dark_mode</span> Dark';
+  }
+
+  // Apply on load
+  applyTheme(getPreferredTheme());
+
+  // Attach toggle
+  document.addEventListener('click', e => {
+    if (e.target.closest('#theme-toggle-btn')) toggleTheme();
   });
 
-  console.log(
-    '%cBaseline UI',
-    'font-size: 18px; font-weight: 700; color: #6750a4;'
-  );
-  console.log(
-    '%cOriginal source: baseline-ui repository\nCode: MIT · Text: CC BY-NC-ND 4.0',
-    'font-size: 13px; color: #555;'
-  );
+  // === NAV ACTIVE STATE ===
+  const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+  document.querySelectorAll('.nav-bar .nav-item').forEach(item => {
+    item.classList.toggle('active', item.getAttribute('href') === currentPath);
+  });
+
+  console.log('%cBaseline UI', 'font-size:18px; font-weight:700; color:#6750a4;');
 })();
