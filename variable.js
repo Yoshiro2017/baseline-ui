@@ -1,5 +1,5 @@
-// Baseline UI — Variable Font Playground Parser & Renderer
-// Default MONO set to 0; /normal fully hidden; text visibility fixed
+// Baseline UI — Variable Font Playground Parser
+// Rules: /cmd FIRST-TOKEN = hidden setting; REST = visible text
 // License: MIT License
 
 (function () {
@@ -11,7 +11,7 @@
   const clearBtn  = document.getElementById('vfp-clear');
   const sampleBtn = document.getElementById('vfp-sample');
 
-  // Default state — MONO = 0 (proportional by default)
+  // Default state — MONO = 0 (proportional)
   const defaultState = {
     font: 'Google Sans Flex',
     wght: 400,
@@ -74,65 +74,111 @@ Here you can experiment with variable axes.
       .replace(/>/g, '&gt;');
   }
 
+  // Apply current style to text and append to output
+  function renderSpan(text, state, output) {
+    if (!text) return;
+    const css = buildVariationCSS(state);
+    output.push(`<span style="font-family:'${state.font}';font-variation-settings:${css};">${escapeHTML(text)}</span>`);
+  }
+
+  // Parse: /cmd → take FIRST token as value (hidden), rest = visible
   function parseAndRender(input) {
     let state = resetState();
     const output = [];
 
-    const tokens = input.split(/(\/\w+(?:\s+[^/]*)?)/g);
+    // Split by commands: capture each /cmd block separately
+    const segments = input.split(/(\/\w+(?:\s+[^\s/]+(?:\s+[^\s/]+)*)?)/g);
 
-    for (const token of tokens) {
-      if (!token) continue;
+    for (const seg of segments) {
+      if (!seg) continue;
 
-      const cmdMatch = token.match(/^\/(\w+)(?:\s+(.*))?$/s);
+      // Command block found
+      const cmdMatch = seg.match(/^\/(\w+)(?:\s+([^\s/]+)(?:\s+(.*))?)?$/s);
       if (cmdMatch) {
-        const cmd = cmdMatch[1].toLowerCase();
-        const arg = cmdMatch[2] || '';
+        const cmd  = cmdMatch[1].toLowerCase();
+        const arg1 = cmdMatch[2] || '';  // FIRST token = value (hidden)
+        const rest = cmdMatch[3] || '';  // Everything else = visible text
 
         switch (cmd) {
           case 'font':
-            if (arg.trim()) state.font = arg.trim();
-            break;
+            if (arg1) state.font = arg1 + (rest ? '' : '');
+            // For font: multiple words = full font name
+            const fontMatch = seg.match(/^\/font\s+(.+?)(?:\s*\n|\s*$)/);
+            if (fontMatch) {
+              const nameParts = fontMatch[1].split(/\s+/);
+              // Font name = ALL consecutive words before newline or next /cmd
+              const fullName = nameParts[0];
+              // Actually capture multi-word font name properly
+              const fullMatch = seg.match(/^\/font\s+([^/]+?)(?:\s*\n|\s+(?=.)|$)/);
+              if (fullMatch) {
+                const nameAndText = fullMatch[1].trim().split(/\s+(?=[^\s/]+$)/);
+                // Re-split: consume until we hit text that doesn't look like font name
+                const parts = seg.replace(/^\/font\s+/, '').split(/\s+/);
+                let nameEnd = 0;
+                const candidateFont = [];
+                for (const word of parts) {
+                  if (/^[A-Z]/.test(word) || candidateFont.length > 0 && /^(Sans|Code|Pro|Flex|Mono)$/.test(word)) {
+                    candidateFont.push(word);
+                    nameEnd++;
+                  } else break;
+                }
+                if (candidateFont.length > 0) {
+                  state.font = candidateFont.join(' ');
+                  const visibleText = parts.slice(nameEnd).join(' ');
+                  renderSpan(visibleText, state, output);
+                }
+              }
+            }
+            // Font commands handled above — skip default
+            continue;
+
           case 'normal':
             state = resetState();
-            // Hidden — no output
+            // COMPLETELY HIDDEN — no output
             continue;
+
+          // Numeric axes — arg1 = number, rest = visible text
           case 'wght': case 'weight':
-            if (arg) state.wght = parseFloat(arg);
-            break;
+            if (arg1) state.wght = parseFloat(arg1);
+            renderSpan(rest, state, output);
+            continue;
           case 'wdth':
-            if (arg) state.wdth = parseFloat(arg);
-            break;
+            if (arg1) state.wdth = parseFloat(arg1);
+            renderSpan(rest, state, output);
+            continue;
           case 'opsz':
-            if (arg) state.opsz = parseFloat(arg);
-            break;
+            if (arg1) state.opsz = parseFloat(arg1);
+            renderSpan(rest, state, output);
+            continue;
           case 'slnt':
-            if (arg) state.slnt = parseFloat(arg);
-            break;
+            if (arg1) state.slnt = parseFloat(arg1);
+            renderSpan(rest, state, output);
+            continue;
           case 'ital':
-            if (arg) state.ital = parseFloat(arg);
-            break;
+            if (arg1) state.ital = parseFloat(arg1);
+            renderSpan(rest, state, output);
+            continue;
           case 'grad':
-            if (arg) state.GRAD = parseFloat(arg);
-            break;
+            if (arg1) state.GRAD = parseFloat(arg1);
+            renderSpan(rest, state, output);
+            continue;
           case 'rond':
-            if (arg) state.ROND = parseFloat(arg);
-            break;
+            if (arg1) state.ROND = parseFloat(arg1);
+            renderSpan(rest, state, output);
+            continue;
           case 'mono':
-            if (arg) state.MONO = parseFloat(arg);
-            break;
+            if (arg1) state.MONO = parseFloat(arg1);
+            renderSpan(rest, state, output);
+            continue;
           case 'hexp':
-            if (arg) state.HEXP = parseFloat(arg);
-            break;
+            if (arg1) state.HEXP = parseFloat(arg1);
+            renderSpan(rest, state, output);
+            continue;
         }
-        if (arg.trim()) {
-          const css = buildVariationCSS(state);
-          output.push(`<span style="font-family:'${state.font}';font-variation-settings:${css};">${escapeHTML(arg)}</span>`);
-        }
-        continue;
       }
 
-      const css = buildVariationCSS(state);
-      output.push(`<span style="font-family:'${state.font}';font-variation-settings:${css};">${escapeHTML(token)}</span>`);
+      // Plain text — render as-is
+      renderSpan(seg, state, output);
     }
 
     outputEl.innerHTML = output.join('').replace(/\n/g, '<br>');
