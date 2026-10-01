@@ -3,191 +3,221 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Components — Baseline UI Original Source · Ready-to-use interface building blocks">
-  <title>Components — Baseline UI</title>
+  <meta name="description" content="Components — Reusable UI elements, markup patterns, and code snippets">
+  <title>Components · Baseline UI</title>
 
-  <!-- Fonts — same set used across all pages -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;700&display=swap">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@400;500;700&display=swap">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap">
+  <!-- Core fonts only -->
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Code:ital,wght,MONO@0,300..800,0..1;1,300..800,0..1&family=Google+Sans+Flex:opsz,slnt,wdth,wght,GRAD,ROND@6..144,-10..0,25..151,1..1000,0..100,0..100&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@400&display=swap">
-
   <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Page-specific preview styles */
+    .preview-block {
+      border: 1px dashed var(--md-sys-color-outline-variant);
+      border-radius: 8px;
+      padding: 20px;
+      margin: 12px 0;
+    }
+    .code-block {
+      background-color: rgba(0,0,0,0.04);
+      border-radius: 6px;
+      padding: 14px;
+      font-family: var(--md-font-mono);
+      font-size: 0.8125rem;
+      white-space: pre;
+      overflow-x: auto;
+      margin: 12px 0;
+    }
+  </style>
 </head>
 <body>
 
-  <!-- Source Identity Notice -->
   <div class="source-notice">
     <span class="material-symbols-outlined">verified_user</span>
     <div>
-      <p class="body-md"><strong>This is the original source.</strong> The repository name baseline-ui is taken and held exclusively by this source. Forks must not claim this name as their primary identity.</p>
+      <p class="body-md"><strong>This is the original source.</strong> The name "baseline-ui" is reserved by this repository. Forks must not claim this name as their primary identity.</p>
     </div>
   </div>
 
-  <!-- Page Header -->
+  <div class="license-notice">
+    <span class="material-symbols-outlined">gavel</span>
+    <div>
+      <p class="body-md"><strong>Protected content.</strong> Page text: CC BY-NC-ND 4.0 — no adaptations, no commercial use. Code snippets: CC BY-NC-SA 4.0.</p>
+    </div>
+  </div>
+
   <header class="page-header">
-    <h1 class="display-md">Components</h1>
-    <p class="body-lg" style="margin-top: 8px;">Ready-to-use building blocks for your interface</p>
-    <p class="body-md" style="margin-top: 4px; opacity: 0.8;">Copy, adapt, and drop directly into your pages — no build process required</p>
+    <h1 class="display-4xl">Components</h1>
+    <p class="body-lg" style="margin-top: 12px;">Reusable UI elements, markup patterns, and usage examples</p>
   </header>
 
   <main>
     <section>
-      <h2 class="headline-sm" style="margin-bottom: 16px;">Overview</h2>
-      <div class="card-filled" style="margin-bottom: 24px;">
-        <p class="body-md" style="margin-bottom: 12px;">Every component below uses classes defined in <code>styles.css</code>. All spacing, colors, and states are consistent with the rest of Baseline UI — they automatically respect light and dark themes, maintain accessibility contrast, and work on both desktop and mobile screens.</p>
-        <p class="body-md">No extra tools, no preprocessors, no framework — just plain HTML and CSS. Copy the example code, change the text and link addresses, and drop it into your page.</p>
+      <h2 class="headline-lg">Introduction</h2>
+      <div class="card-filled">
+        <p>All components are built with plain HTML and CSS — no frameworks, no extra dependencies. Classes follow a flat naming pattern based on Material Design guidelines. Copy the markup directly into your page and it will render correctly.</p>
+        <p>Icons use Material Symbols exclusively — do not use emoji in their place.</p>
       </div>
 
-      <h2 class="headline-sm" style="margin-bottom: 16px;">Buttons</h2>
-      <div class="card-filled" style="margin-bottom: 24px;">
-        <p class="body-md" style="margin-bottom: 16px;">Two button styles are provided: <strong>Filled</strong> for primary actions and main navigation; <strong>Outlined</strong> for secondary actions and less prominent links. Use <code>&lt;a&gt;</code> when navigating between pages; use <code>&lt;button&gt;</code> for on-page actions such as closing notices or opening panels.</p>
-        
-        <div style="display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 20px; align-items: center;">
-          <a href="#" class="btn-filled">Filled Button</a>
-          <a href="#" class="btn-outlined">Outlined Button</a>
-          <button class="btn-filled">Button Tag</button>
-          <button class="btn-outlined">Button Tag</button>
+      <h2 class="headline-lg">Buttons</h2>
+
+      <h3 class="title-xl">Filled Button</h3>
+      <div class="preview-block">
+        <button class="btn-filled">
+          <span class="material-symbols-outlined" style="font-size: 20px;">check_circle</span>
+          Confirm
+        </button>
+      </div>
+      <div class="code-block">&lt;button class="btn-filled"&gt;
+  &lt;span class="material-symbols-outlined" style="font-size: 20px;"&gt;check_circle&lt;/span&gt;
+  Confirm
+&lt;/button&gt;</div>
+
+      <h3 class="title-xl">Outlined Button</h3>
+      <div class="preview-block">
+        <button class="btn-outlined">
+          <span class="material-symbols-outlined" style="font-size: 20px;">cancel</span>
+          Cancel
+        </button>
+      </div>
+      <div class="code-block">&lt;button class="btn-outlined"&gt;
+  &lt;span class="material-symbols-outlined" style="font-size: 20px;"&gt;cancel&lt;/span&gt;
+  Cancel
+&lt;/button&gt;</div>
+
+      <h3 class="title-xl">Link as Button</h3>
+      <div class="preview-block">
+        <a href="index.html" class="btn-outlined">
+          <span class="material-symbols-outlined" style="font-size: 20px;">arrow_back</span>
+          Go Home
+        </a>
+      </div>
+      <div class="code-block">&lt;a href="index.html" class="btn-outlined"&gt;
+  &lt;span class="material-symbols-outlined" style="font-size: 20px;"&gt;arrow_back&lt;/span&gt;
+  Go Home
+&lt;/a&gt;</div>
+
+      <h2 class="headline-lg">Cards</h2>
+
+      <h3 class="title-xl">Filled Card</h3>
+      <div class="preview-block" style="padding: 0;">
+        <div class="card-filled" style="margin: 0;">
+          <h4 style="margin-top: 0; font-size: 1.125rem;">Card Title</h4>
+          <p>This is a standard filled card. Use it for grouped content, explanatory blocks, or feature descriptions.</p>
         </div>
-
-        <pre style="background: var(--md-sys-color-surface-container-low); padding: 16px; border-radius: var(--md-shape-sm); font-family: var(--md-font-mono); font-size: 13px; line-height: 1.6; overflow-x: auto;">&lt;!-- Navigation link — filled style --&gt;
-&lt;a href="destination.html" class="btn-filled"&gt;Go There&lt;/a&gt;
-
-&lt;!-- Navigation link — outlined style --&gt;
-&lt;a href="destination.html" class="btn-outlined"&gt;Learn More&lt;/a&gt;
-
-&lt;!-- On-page action — e.g. close or submit --&gt;
-&lt;button class="btn-filled"&gt;Submit Form&lt;/button&gt;
-&lt;button class="btn-outlined"&gt;Cancel&lt;/button&gt;</pre>
       </div>
+      <div class="code-block">&lt;div class="card-filled"&gt;
+  &lt;h4&gt;Card Title&lt;/h4&gt;
+  &lt;p&gt;Card content goes here.&lt;/p&gt;
+&lt;/div&gt;</div>
 
-      <h2 class="headline-sm" style="margin-bottom: 16px;">Cards</h2>
-      <div class="card-filled" style="margin-bottom: 24px;">
-        <p class="body-md" style="margin-bottom: 16px;">Cards group related information into distinct containers. They provide visual structure and lift slightly when hovered, giving clear feedback. Place icons, headings, paragraphs, and buttons inside as needed.</p>
-        
-        <div style="margin-bottom: 20px;">
-          <div class="card-filled" style="max-width: 400px;">
-            <span class="material-symbols-outlined icon-lg" style="color: var(--md-sys-color-primary);">palette</span>
-            <h3 class="title-lg" style="margin: 12px 0 8px;">Example Card</h3>
-            <p class="body-md" style="margin-bottom: 16px;">This card shows how content sits together. Icon, heading, text, and action link — all in one consistent block.</p>
-            <a href="#" class="btn-filled">Get Started</a>
+      <h2 class="headline-lg">Notice Blocks</h2>
+
+      <h3 class="title-xl">Source Notice</h3>
+      <div class="preview-block" style="padding: 0;">
+        <div class="source-notice" style="border-radius: 8px 8px 0 0; border: none; margin: 0;">
+          <span class="material-symbols-outlined">verified_user</span>
+          <div>
+            <p class="body-md"><strong>This is the original source.</strong> Forks must not claim this name as primary.</p>
           </div>
         </div>
-
-        <pre style="background: var(--md-sys-color-surface-container-low); padding: 16px; border-radius: var(--md-shape-sm); font-family: var(--md-font-mono); font-size: 13px; line-height: 1.6; overflow-x: auto;">&lt;div class="card-filled"&gt;
-  &lt;span class="material-symbols-outlined icon-lg" style="color: var(--md-sys-color-primary);"&gt;palette&lt;/span&gt;
-  &lt;h3 class="title-lg"&gt;Card Heading&lt;/h3&gt;
-  &lt;p class="body-md"&gt;Your description text goes here.&lt;/p&gt;
-  &lt;a href="page.html" class="btn-filled"&gt;Action Label&lt;/a&gt;
-&lt;/div&gt;</pre>
       </div>
-
-      <h2 class="headline-sm" style="margin-bottom: 16px;">Grid Layout</h2>
-      <div class="card-filled" style="margin-bottom: 24px;">
-        <p class="body-md" style="margin-bottom: 16px;">Wrap cards in a <code>.grid</code> container to arrange them side-by-side. On wide screens they appear in columns; on phones they stack automatically so everything remains readable without horizontal scrolling.</p>
-
-        <pre style="background: var(--md-sys-color-surface-container-low); padding: 16px; border-radius: var(--md-shape-sm); font-family: var(--md-font-mono); font-size: 13px; line-height: 1.6; overflow-x: auto;">&lt;div class="grid"&gt;
-  &lt;div class="card-filled"&gt;…&lt;/div&gt;
-  &lt;div class="card-filled"&gt;…&lt;/div&gt;
-  &lt;div class="card-filled"&gt;…&lt;/div&gt;
-&lt;/div&gt;</pre>
-      </div>
-
-      <h2 class="headline-sm" style="margin-bottom: 16px;">Icons</h2>
-      <div class="card-filled" style="margin-bottom: 24px;">
-        <p class="body-md" style="margin-bottom: 16px;">All icons come from Material Symbols — no emojis are used anywhere in this project. Size them with <code>.icon-lg</code> for emphasis or leave at default size. Color them inline using CSS variables to match your theme.</p>
-
-        <pre style="background: var(--md-sys-color-surface-container-low); padding: 16px; border-radius: var(--md-shape-sm); font-family: var(--md-font-mono); font-size: 13px; line-height: 1.6; overflow-x: auto;">&lt;!-- Standard size --&gt;
-&lt;span class="material-symbols-outlined"&gt;home&lt;/span&gt;
-
-&lt;!-- Larger size --&gt;
-&lt;span class="material-symbols-outlined icon-lg"&gt;star&lt;/span&gt;
-
-&lt;!-- Colored using theme palette --&gt;
-&lt;span class="material-symbols-outlined" style="color: var(--md-sys-color-primary);"&gt;favorite&lt;/span&gt;</pre>
-      </div>
-
-      <h2 class="headline-sm" style="margin-bottom: 16px;">Notices & Banners</h2>
-      <div class="card-filled" style="margin-bottom: 24px;">
-        <p class="body-md" style="margin-bottom: 16px;">The source identity notice and license banner at the top of every page are built-in components. The license banner includes a close button that works automatically through <code>main.js</code> — no extra scripting needed.</p>
-
-        <pre style="background: var(--md-sys-color-surface-container-low); padding: 16px; border-radius: var(--md-shape-sm); font-family: var(--md-font-mono); font-size: 13px; line-height: 1.6; overflow-x: auto;">&lt;!-- Source notice — fixed identity, do not remove --&gt;
-&lt;div class="source-notice"&gt;
+      <div class="code-block">&lt;div class="source-notice"&gt;
   &lt;span class="material-symbols-outlined"&gt;verified_user&lt;/span&gt;
-  &lt;div&gt;&lt;p class="body-md"&gt;…text…&lt;/p&gt;&lt;/div&gt;
-&lt;/div&gt;
+  &lt;div&gt;
+    &lt;p&gt;&lt;strong&gt;This is the original source.&lt;/strong&gt;&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</div>
 
-&lt;!-- Dismissible notice --&gt;
-&lt;div class="license-notice"&gt;
-  &lt;span class="material-symbols-outlined"&gt;info&lt;/span&gt;
-  &lt;div&gt;&lt;p class="body-md"&gt;Your message here.&lt;/p&gt;&lt;/div&gt;
-  &lt;button class="btn-outlined icon-sm" data-dismiss=".license-notice"&gt;
-    &lt;span class="material-symbols-outlined"&gt;close&lt;/span&gt;
-  &lt;/button&gt;
-&lt;/div&gt;</pre>
+      <h3 class="title-xl">Licence Notice</h3>
+      <div class="preview-block" style="padding: 0;">
+        <div class="license-notice" style="border-radius: 0 0 8px 8px; border: none; margin: 0;">
+          <span class="material-symbols-outlined">gavel</span>
+          <div>
+            <p class="body-md"><strong>Protected content.</strong> CC BY-NC-ND 4.0 — no commercial use.</p>
+          </div>
+        </div>
+      </div>
+      <div class="code-block">&lt;div class="license-notice"&gt;
+  &lt;span class="material-symbols-outlined"&gt;gavel&lt;/span&gt;
+  &lt;div&gt;
+    &lt;p&gt;&lt;strong&gt;Protected content.&lt;/strong&gt;&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</div>
+
+      <h2 class="headline-lg">Bottom Navigation</h2>
+      <div class="preview-block" style="padding: 0;">
+        <nav class="nav-bar" style="position: relative;">
+          <a href="index.html" class="nav-item">
+            <span class="material-symbols-outlined">home</span>
+            <span class="label-sm">Home</span>
+          </a>
+          <a href="components.html" class="nav-item active">
+            <span class="material-symbols-outlined">widgets</span>
+            <span class="label-sm">Components</span>
+          </a>
+        </nav>
+      </div>
+      <div class="code-block">&lt;nav class="nav-bar"&gt;
+  &lt;a href="index.html" class="nav-item"&gt;
+    &lt;span class="material-symbols-outlined"&gt;home&lt;/span&gt;
+    &lt;span class="label-sm"&gt;Home&lt;/span&gt;
+  &lt;/a&gt;
+  &lt;a href="components.html" class="nav-item active"&gt;
+    &lt;span class="material-symbols-outlined"&gt;widgets&lt;/span&gt;
+    &lt;span class="label-sm"&gt;Components&lt;/span&gt;
+  &lt;/a&gt;
+&lt;/nav&gt;</div>
+
+      <h2 class="headline-lg">Text & Code</h2>
+      <div class="preview-block">
+        <p>Inline code looks like this: <code>variable-name</code>.</p>
+      </div>
+      <div class="code-block">&lt;p&gt;Inline code looks like this: &lt;code&gt;variable-name&lt;/code&gt;.&lt;/p&gt;</div>
+
+      <h2 class="headline-lg">Implementation Rules</h2>
+      <div class="card-filled">
+        <ul>
+          <li><strong>Copy, don't re-invent</strong> — use the exact class names shown; do not create custom variants unless necessary.</li>
+          <li><strong>Icon sizing</strong> — set font-size on the icon span, not via CSS file-level overrides.</li>
+          <li><strong>Active state</strong> — always apply <code>class="nav-item active"</code> to the current page link in the bottom nav.</li>
+          <li><strong>Semantic elements</strong> — use <code>&lt;button&gt;</code> for actions, <code>&lt;a&gt;</code> for navigation, <code>&lt;nav&gt;</code> for navigation blocks.</li>
+          <li><strong>Code snippets on this page</strong> are covered by CC BY-NC-SA 4.0 — share-alike, non-commercial.</li>
+        </ul>
       </div>
 
-      <h2 class="headline-sm" style="margin-bottom: 16px;">Typography Classes</h2>
-      <div class="card-filled" style="margin-bottom: 24px;">
-        <p class="body-md" style="margin-bottom: 16px;">Use these heading and text classes for consistent sizing and weight across every page. Do not use raw <code>&lt;h1&gt;</code>–<code>&lt;h6&gt;</code> without attaching the corresponding class.</p>
-
-        <table style="width: 100%; border-collapse: collapse;">
-          <tr style="border-bottom: 1px solid var(--md-sys-color-outline-variant);">
-            <th style="text-align: left; padding: 10px;">Class</th>
-            <th style="text-align: left; padding: 10px;">Usage</th>
-          </tr>
-          <tr style="border-bottom: 1px solid var(--md-sys-color-outline-variant);">
-            <td style="padding: 10px;"><code>.display-md</code></td>
-            <td style="padding: 10px;">Page titles — largest text on page</td>
-          </tr>
-          <tr style="border-bottom: 1px solid var(--md-sys-color-outline-variant);">
-            <td style="padding: 10px;"><code>.headline-sm</code></td>
-            <td style="padding: 10px;">Section headings</td>
-          </tr>
-          <tr style="border-bottom: 1px solid var(--md-sys-color-outline-variant);">
-            <td style="padding: 10px;"><code>.title-lg</code></td>
-            <td style="padding: 10px;">Card and block titles</td>
-          </tr>
-          <tr style="border-bottom: 1px solid var(--md-sys-color-outline-variant);">
-            <td style="padding: 10px;"><code>.body-lg</code></td>
-            <td style="padding: 10px;">Intro text and emphasized paragraphs</td>
-          </tr>
-          <tr style="border-bottom: 1px solid var(--md-sys-color-outline-variant);">
-            <td style="padding: 10px;"><code>.body-md</code></td>
-            <td style="padding: 10px;">Standard body text — default everywhere</td>
-          </tr>
-          <tr>
-            <td style="padding: 10px;"><code>.label-sm</code></td>
-            <td style="padding: 10px;">Small labels — navigation, captions</td>
-          </tr>
-        </table>
+      <h2 class="headline-lg">Adding New Pages</h2>
+      <div class="card-filled">
+        <p>When adding a new HTML file, update the bottom navigation bar on <em>every</em> existing page so all destinations remain linked. Set the <code>active</code> class on the new page's corresponding nav item.</p>
       </div>
 
-      <!-- Navigation between pages -->
-      <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 8px;">
-        <a href="fonts.html" class="btn-outlined">← Font Stack</a>
-        <a href="guide.html" class="btn-filled">Next: Usage Guide →</a>
+      <div class="nav-links">
+        <a href="index.html" class="btn-outlined">&larr; Back Home</a>
+        <a href="colors.html" class="btn-outlined">&larr; Colors</a>
       </div>
     </section>
   </main>
 
-  <!-- Bottom Navigation Bar -->
   <nav class="nav-bar">
     <a href="index.html" class="nav-item">
       <span class="material-symbols-outlined">home</span>
       <span class="label-sm">Home</span>
     </a>
+    <a href="vfp.html" class="nav-item">
+      <span class="material-symbols-outlined">text_fields</span>
+      <span class="label-sm">VFP</span>
+    </a>
     <a href="guide.html" class="nav-item">
       <span class="material-symbols-outlined">menu_book</span>
       <span class="label-sm">Guide</span>
     </a>
-    <a href="source.html" class="nav-item">
-      <span class="material-symbols-outlined">code</span>
-      <span class="label-sm">Source</span>
+    <a href="colors.html" class="nav-item">
+      <span class="material-symbols-outlined">palette</span>
+      <span class="label-sm">Colors</span>
     </a>
-    <a href="about.html" class="nav-item">
-      <span class="material-symbols-outlined">info</span>
-      <span class="label-sm">About</span>
+    <a href="components.html" class="nav-item active">
+      <span class="material-symbols-outlined">widgets</span>
+      <span class="label-sm">Components</span>
     </a>
   </nav>
 
