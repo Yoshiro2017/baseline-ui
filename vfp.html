@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Variable Font Playground — Experiment with variable font axes using inline commands">
+  <title>VFP — Variable Font Playground · Baseline UI</title>
+
+  <!-- Extended font set — VFP page only -->
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Code:ital,wght,MONO@0,300..800,0..1;1,300..800,0..1&family=Google+Sans+Flex:opsz,slnt,wdth,wght,GRAD,ROND@6..144,-10..0,25..151,1..1000,0..100,0..100&family=Google+Sans:ital,opsz,wght,GRAD@0,17..18,400..700,-50..200;1,17..18,400..700,-50..200&family=Lexend:wght@100..900&family=Readex+Pro:wght,HEXP@160..700,0..100&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto+Slab:wght@100..900&family=Roboto:ital,wdth,wght@0,75..100,100..900;1,75..100,100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@400&display=swap">
+
+  <!-- Shared core + VFP-specific CSS -->
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="variable.css">
+</head>
+<body>
+
+  <div class="source-notice">
+    <span class="material-symbols-outlined">verified_user</span>
+    <div>
+      <p class="body-md"><strong>This is the original source.</strong> The name "baseline-ui" is reserved by this repository. Forks must not claim this name as their primary identity.</p>
+    </div>
+  </div>
+
+  <div class="license-notice">
+    <span class="material-symbols-outlined">gavel</span>
+    <div>
+      <p class="body-md"><strong>Protected content.</strong> Page text: CC BY-NC-ND 4.0 — no adaptations, no commercial use.</p>
+    </div>
+  </div>
+
+  <header class="page-header">
+    <h1 class="display-4xl">Variable Font Playground</h1>
+    <p class="body-lg" style="margin-top: 12px;">Experiment with variable font axes — commands disappear from the final preview</p>
+    <p class="body-sm" style="margin-top: 4px; opacity: 0.7;">Extra font families loaded here for VFP use only — not loaded elsewhere</p>
+  </header>
+
+  <main class="vfp-container">
+    <section>
+      <h2 class="headline-lg">How It Works</h2>
+      <div class="card-filled">
+        <p>Type any text into the input box below. Insert <em>commands</em> anywhere — they control how following text appears but vanish completely from preview. Settings persist until overridden or reset with <code>/normal</code>. Unsupported axes are silently ignored.</p>
+
+        <h3 class="title-xl">Command Reference</h3>
+        <div class="vfp-commands">
+          <ul>
+            <li><code>/font [name]</code> — Switch font: Google Sans Flex / Code / Sans / Lexend / Readex Pro / Roboto / Roboto Mono / Roboto Slab</li>
+            <li><code>/wght [number]</code> — Weight: varies; Readex Pro 160–700</li>
+            <li><code>/wdth [number]</code> — Width: Flex 25–151, Roboto 75–100</li>
+            <li><code>/grad [number]</code> — Grade: Flex 0–100, Google Sans −50–200</li>
+            <li><code>/slnt [number]</code> — Slant: Flex −10 to 0</li>
+            <li><code>/ital [0 or 1]</code> — Italic: 0 = roman, 1 = italic</li>
+            <li><code>/rond [number]</code> — Roundness: Flex only, 0–100</li>
+            <li><code>/hexp [number]</code> — Horizontal expansion: Readex Pro only, <strong>default 0</strong>, range 0–100</li>
+            <li><code>/mono [0…1]</code> — Monospace: Code only, 0 = proportional, 1 = fixed</li>
+            <li><code>/normal</code> — Reset ALL axes to defaults</li>
+          </ul>
+        </div>
+
+        <h3 class="title-xl">Example</h3>
+        <div class="vfp-example">
+/wght 400 Hello, /ital 1 /wght 700 world! /normal plain text here
+        </div>
+        <p>Preview: Hello, (regular) → world! (bold italic) → plain text (defaults)</p>
+      </div>
+
+      <h2 class="headline-lg">Playground</h2>
+      <textarea id="vfp-input" class="vfp-textarea" placeholder="Type here or load the example..."></textarea>
+
+      <div class="vfp-btn-row">
+        <button id="vfp-render" class="btn-filled">
+          <span class="material-symbols-outlined" style="font-size: 20px;">visibility</span>
+          Update Preview
+        </button>
+        <button id="vfp-clear" class="btn-outlined">
+          <span class="material-symbols-outlined" style="font-size: 20px;">delete</span>
+          Clear
+        </button>
+        <button id="vfp-sample" class="btn-outlined">
+          <span class="material-symbols-outlined" style="font-size: 20px;">edit_note</span>
+          Load Example
+        </button>
+      </div>
+
+      <h3 class="title-xl">Live Preview</h3>
+      <div id="vfp-output" class="vfp-output">
+        Type something above and click Update Preview
+      </div>
+      <p class="vfp-note">Commands are removed from preview — only styled text appears</p>
+
+      <h2 class="headline-lg">Axis Support</h2>
+      <div class="card-filled">
+        <table>
+          <tr><th>Axis</th><th>Flex</th><th>Code</th><th>Sans</th><th>Roboto</th><th>Lexend</th><th>Readex Pro</th></tr>
+          <tr><td><code>wght</code></td><td>1–1000</td><td>300–800</td><td>400–700</td><td>100–900</td><td>100–900</td><td>160–700</td></tr>
+          <tr><td><code>wdth</code></td><td>25–151</td><td>—</td><td>—</td><td>75–100</td><td>—</td><td>—</td></tr>
+          <tr><td><code>GRAD</code></td><td>0–100</td><td>—</td><td>−50–200</td><td>—</td><td>—</td><td>—</td></tr>
+          <tr><td><code>slnt</code></td><td>−10–0</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+          <tr><td><code>ital</code></td><td>0</td><td>0/1</td><td>0/1</td><td>0/1</td><td>—</td><td>—</td></tr>
+          <tr><td><code>ROND</code></td><td>0–100</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+          <tr><td><code>HEXP</code></td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td><strong>0</strong>–100</td></tr>
+          <tr><td><code>MONO</code></td><td>—</td><td>0–1</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+        </table>
+        <p style="margin-top: 16px;"><code>HEXP</code> default = <strong>0</strong> for Readex Pro. Dash (—) = axis not supported.</p>
+      </div>
+    </section>
+
+    <div class="nav-links">
+      <a href="index.html" class="btn-outlined">&larr; Back Home</a>
+      <a href="fonts.html" class="btn-outlined">&larr; Font Stack</a>
+    </div>
+  </main>
+
+  <nav class="nav-bar">
+    <a href="index.html" class="nav-item">
+      <span class="material-symbols-outlined">home</span>
+      <span class="label-sm">Home</span>
+    </a>
+    <a href="vfp.html" class="nav-item active">
+      <span class="material-symbols-outlined">text_fields</span>
+      <span class="label-sm">VFP</span>
+    </a>
+    <a href="guide.html" class="nav-item">
+      <span class="material-symbols-outlined">menu_book</span>
+      <span class="label-sm">Guide</span>
+    </a>
+    <a href="source.html" class="nav-item">
+      <span class="material-symbols-outlined">code</span>
+      <span class="label-sm">Source</span>
+    </a>
+    <a href="about.html" class="nav-item">
+      <span class="material-symbols-outlined">info</span>
+      <span class="label-sm">About</span>
+    </a>
+  </nav>
+
+  <script src="variable.js"></script>
+</body>
+</html>
