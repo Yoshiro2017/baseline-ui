@@ -3,14 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Baseline UI — Original Source · Latin · Vietnamese · Arabic">
-  <title>Homepage - Baseline UI</title>
+  <meta name="description" content="Baseline UI — A Material Design-based website project">
+  <title>Baseline UI</title>
 
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;700&display=swap">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@400;500;700&display=swap">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap">
+  <!-- Core fonts only -->
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Code:ital,wght,MONO@0,300..800,0..1;1,300..800,0..1&family=Google+Sans+Flex:opsz,slnt,wdth,wght,GRAD,ROND@6..144,-10..0,25..151,1..1000,0..100,0..100&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@400&display=swap">
-
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -18,75 +16,56 @@
   <div class="source-notice">
     <span class="material-symbols-outlined">verified_user</span>
     <div>
-      <p class="body-md"><strong>This is the original source.</strong> The repository name baseline-ui is taken and held exclusively by this source. Forks must not claim this name as their primary identity.</p>
+      <p class="body-md"><strong>This is the original source.</strong> The name "baseline-ui" is reserved by this repository. Forks must not claim this name as their primary identity.</p>
     </div>
   </div>
 
   <div class="license-notice">
     <span class="material-symbols-outlined">gavel</span>
     <div>
-      <p class="body-md"><strong>Displayed content: CC BY-NC-ND 4.0.</strong> No adaptations permitted. No commercial use. Cannot rewrite or present as own work. <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener noreferrer">Full license</a></p>
+      <p class="body-md"><strong>Protected content.</strong> Website text: CC BY-NC-ND 4.0 — you may not adapt, remix, or use it commercially. Code: MIT License. Text files: CC BY-NC 4.0.</p>
     </div>
-    <button class="btn-outlined icon-sm" data-dismiss=".license-notice" style="margin-left: auto; padding: 6px 12px;">
-      <span class="material-symbols-outlined">close</span>
-    </button>
   </div>
 
   <header class="page-header">
-    <h1 class="display-md">Baseline UI</h1>
-    <p class="body-lg" style="margin-top: 8px;">Original Source · Material 3 reference interface system</p>
-    <p class="body-md" style="margin-top: 4px; opacity: 0.8;">Supported scripts: Latin · Vietnamese · Arabic</p>
+    <h1 class="display-4xl">Baseline UI</h1>
+    <p class="body-lg" style="margin-top: 12px;">A clean, Material Design-based interface built with open web standards</p>
   </header>
 
   <main>
     <section>
-      <div class="grid">
-        <div class="card-filled">
-          <span class="material-symbols-outlined icon-lg" style="color: var(--md-sys-color-primary);">palette</span>
-          <h2 class="title-lg" style="margin: 12px 0;">Color System</h2>
-          <p class="body-md" style="margin-bottom: 16px;">Centralized palette with automatic light/dark switching following your system preference. Consistent contrast and accessibility throughout.</p>
-          <a href="colors.html" class="btn-filled">Learn More</a>
-        </div>
-
-        <div class="card-filled">
-          <span class="material-symbols-outlined icon-lg" style="color: var(--md-sys-color-tertiary);">font_download</span>
-          <h2 class="title-lg" style="margin: 12px 0;">Font Stack</h2>
-          <p class="body-md" style="margin-bottom: 16px;">Lexend for Latin and Vietnamese. Readex Pro exclusively for Arabic. JetBrains Mono for code and technical text. Zero emojis — Material Symbols only.</p>
-          <a href="fonts.html" class="btn-outlined">View Details</a>
-        </div>
-
-        <div class="card-filled">
-          <span class="material-symbols-outlined icon-lg" style="color: var(--md-sys-color-secondary);">widgets</span>
-          <h2 class="title-lg" style="margin: 12px 0;">Components</h2>
-          <p class="body-md" style="margin-bottom: 16px;">Ready-to-use cards, buttons, navigation, forms — consistent spacing, rounded corners, smooth hover and active states. Drop in, no build tools needed.</p>
-          <a href="components.html" class="btn-outlined">Explore Components</a>
-        </div>
-
-        <div class="card-filled">
-          <span class="material-symbols-outlined icon-lg" style="color: var(--md-sys-color-primary);">article</span>
-          <h2 class="title-lg" style="margin: 12px 0;">Usage Guide</h2>
-          <p class="body-md" style="margin-bottom: 16px;">Step-by-step instructions: how to start, add pages, follow license rules, and extend the system properly.</p>
-          <a href="guide.html" class="btn-filled">Read Guide</a>
-        </div>
-
-        <div class="card-filled">
-          <span class="material-symbols-outlined icon-lg" style="color: var(--md-sys-color-tertiary);">description</span>
-          <h2 class="title-lg" style="margin: 12px 0;">Source & Licenses</h2>
-          <p class="body-md" style="margin-bottom: 16px;">File structure, what each license covers, allowed uses, and attribution requirements. Know your rights and responsibilities.</p>
-          <a href="source.html" class="btn-outlined">View Terms</a>
-        </div>
-
-        <div class="card-filled">
-          <span class="material-symbols-outlined icon-lg" style="color: var(--md-sys-color-secondary);">info</span>
-          <h2 class="title-lg" style="margin: 12px 0;">About This Project</h2>
-          <p class="body-md" style="margin-bottom: 16px;">Purpose, design philosophy, supported scripts, and who maintains the original source.</p>
-          <a href="about.html" class="btn-filled">Learn About Us</a>
-        </div>
+      <h2 class="headline-lg">Welcome</h2>
+      <div class="card-filled">
+        <p>Baseline UI is a starting point and reference implementation for building modern websites. It follows Material Design principles, uses variable fonts for typography, and is built entirely with plain HTML, CSS, and JavaScript — no frameworks required.</p>
+        <p>This repository is the <strong>original source</strong> for the baseline-ui project. If you obtained this code from somewhere else, the version you are viewing may be outdated or modified.</p>
       </div>
 
-      <div class="script-demo">
-        Supported scripts demonstration:<br>
-        Tiếng Việt · English · <span class="arabic">العربية</span>
+      <h2 class="headline-lg">What's Here</h2>
+      <div class="card-filled">
+        <ul>
+          <li><strong>Variable Font Playground (VFP)</strong> — Experiment with variable font axes in real time using simple inline commands</li>
+          <li><strong>Font Stack</strong> — Details on the typefaces used and their supported writing systems: Latin and Vietnamese</li>
+          <li><strong>Guide</strong> — How to use, modify, and extend this project properly</li>
+          <li><strong>Source</strong> — File structure, licenses, and attribution</li>
+          <li><strong>About</strong> — Purpose, design philosophy, and project identity</li>
+        </ul>
+      </div>
+
+      <h2 class="headline-lg">Quick Start</h2>
+      <div class="card-filled">
+        <p>Simply open any <code>.html</code> file in a web browser. All resources load from public CDN links or local files — no build tools needed.</p>
+        <p>For local development, open this folder in your preferred code editor. JavaScript is separated by feature to keep files short and maintainable.</p>
+      </div>
+
+      <div class="nav-links">
+        <a href="vfp.html" class="btn-filled">
+          <span class="material-symbols-outlined" style="font-size: 20px;">text_fields</span>
+          Try the VFP
+        </a>
+        <a href="guide.html" class="btn-outlined">
+          <span class="material-symbols-outlined" style="font-size: 20px;">menu_book</span>
+          Read the Guide
+        </a>
       </div>
     </section>
   </main>
@@ -95,6 +74,10 @@
     <a href="index.html" class="nav-item active">
       <span class="material-symbols-outlined">home</span>
       <span class="label-sm">Home</span>
+    </a>
+    <a href="vfp.html" class="nav-item">
+      <span class="material-symbols-outlined">text_fields</span>
+      <span class="label-sm">VFP</span>
     </a>
     <a href="guide.html" class="nav-item">
       <span class="material-symbols-outlined">menu_book</span>
