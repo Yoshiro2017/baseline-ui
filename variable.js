@@ -1,7 +1,8 @@
 // Baseline UI — Variable Font Playground Parser
-// ✅ Rules: /cmd FIRST-TOKEN = hidden setting; ALL REMAINDER = visible text
-// ✅ /font = consumes ALL consecutive words as name; rest = visible
-// ✅ /normal = hidden, no output
+// ✅ /font [FONT NAME] → name hidden, rest visible
+// ✅ Numeric axes: /cmd [NUMBER] → number hidden, rest visible
+// ✅ /normal → fully hidden, no output
+// ✅ MONO = 0 by default
 // License: MIT License
 
 (function () {
@@ -67,7 +68,7 @@ Here you can experiment with variable axes.
   }
 
   function escapeHTML(s) {
-    return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(>/g,'&gt;');
+    return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
   }
 
   function span(text, state) {
@@ -75,69 +76,93 @@ Here you can experiment with variable axes.
     return `<span style="font-family:'${state.font}';font-variation-settings:${buildVariationCSS(state)};">${escapeHTML(text)}</span>`;
   }
 
+  // Known font names — these are the ONLY ones we recognise
+  const knownFonts = [
+    'Google Sans Flex',
+    'Google Sans Code',
+    'Google Sans',
+    'Readex Pro',
+    'Lexend',
+    'Roboto'
+  ];
+
   function parseAndRender(input) {
     let state = resetState();
     const out = [];
 
-    // Split into: plain text | /command blocks
-    const parts = input.split(/(\/\w+(?:\s+[^/]*)?)/g);
+    // Split into: plain text blocks | /command blocks
+    const blocks = input.split(/(\/\w+(?:\s+[^/]*)?)/g);
 
-    for (const part of parts) {
-      if (!part) continue;
+    for (const block of blocks) {
+      if (!block) continue;
 
-      // Is this a command block?
-      const cmd = part.match(/^\/(\w+)(?:\s+(.*))?$/s);
-      if (!cmd) {
-        // Plain text → render directly
-        out.push(span(part, state));
+      // Not a command → plain text, render directly
+      if (!block.startsWith('/')) {
+        out.push(span(block, state));
         continue;
       }
 
-      const name = cmd[1].toLowerCase();
-      const args = (cmd[2] || '').trim();
+      // Parse command
+      const cmdMatch = block.match(/^\/(\w+)(?:\s+(.*))?$/s);
+      if (!cmdMatch) continue;
 
-      // Special: /font → consume ALL consecutive words as font name
-      if (name === 'font') {
-        if (!args) continue;
-        const words = args.split(/\s+/);
-        let fontName = '';
-        let visibleStart = 0;
+      const cmd = cmdMatch[1].toLowerCase();
+      const rest = cmdMatch[2] || '';
 
-        // Consume words until we hit something that looks like content
-        for (let i = 0; i < words.length; i++) {
-          const w = words[i];
-          // Font name pattern: capitalized words or known fragments
-          if (/^[A-Z][a-z]+$/.test(w) || /^(Sans|Code|Flex|Pro|Mono|Lexend|Roboto|Google)$/.test(w) || !visibleStart) {
-            fontName += (fontName ? ' ' : '') + w;
-            visibleStart = i + 1;
-          } else {
+      // === /font — EXACT match against known names ===
+      if (cmd === 'font') {
+        if (!rest.trim()) continue;
+
+        // Find which known font name matches the START of rest
+        let matchedName = null;
+        let remainingText = '';
+        for (const name of knownFonts) {
+          if (rest.startsWith(name)) {
+            matchedName = name;
+            remainingText = rest.slice(name.length);
             break;
           }
         }
 
-        if (fontName) state.font = fontName;
-        const rest = words.slice(visibleStart).join(' ');
-        out.push(span(rest, state));
+        // If no known font matched → take first word as fallback
+        if (!matchedName) {
+          const firstSpace = rest.search(/\s/);
+          if (firstSpace === -1) {
+            matchedName = rest;
+            remainingText = '';
+          } else {
+            matchedName = rest.slice(0, firstSpace);
+            remainingText = rest.slice(firstSpace);
+          }
+        }
+
+        state.font = matchedName.trim();
+        out.push(span(remainingText, state));
         continue;
       }
 
-      // Special: /normal → hidden, no output
-      if (name === 'normal') {
+      // === /normal — completely hidden ===
+      if (cmd === 'normal') {
         state = resetState();
         continue;
       }
 
-      // Numeric axes: FIRST token = value, REST = visible text
-      const tokens = args.match(/^(\S+)(?:\s+(.*))?$/s);
-      if (!tokens) continue;
+      // === Numeric axes — first token = value, rest = visible text ===
+      const firstSpace = rest.search(/\s/);
+      let valueStr = '';
+      let visibleText = '';
 
-      const valStr = tokens[1];
-      const restText = tokens[2] || '';
+      if (firstSpace === -1) {
+        valueStr = rest;
+        visibleText = '';
+      } else {
+        valueStr = rest.slice(0, firstSpace);
+        visibleText = rest.slice(firstSpace + 1);
+      }
 
-      // Apply value if numeric
-      const num = parseFloat(valStr);
+      const num = parseFloat(valueStr);
       if (!isNaN(num)) {
-        switch (name) {
+        switch (cmd) {
           case 'wght': case 'weight': state.wght = num; break;
           case 'wdth': state.wdth = num; break;
           case 'opsz': state.opsz = num; break;
@@ -150,8 +175,7 @@ Here you can experiment with variable axes.
         }
       }
 
-      // Everything after first token = visible text
-      out.push(span(restText, state));
+      out.push(span(visibleText, state));
     }
 
     outputEl.innerHTML = out.join('').replace(/\n/g, '<br>');
