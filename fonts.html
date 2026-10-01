@@ -3,14 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Font Stack — Baseline UI Original Source">
-  <title>Font Stack — Baseline UI</title>
+  <meta name="description" content="Font Stack — Typefaces, axes, and writing system support">
+  <title>Font Stack · Baseline UI</title>
 
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;700&display=swap">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@400;500;700&display=swap">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap">
+  <!-- Core fonts only -->
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Code:ital,wght,MONO@0,300..800,0..1;1,300..800,0..1&family=Google+Sans+Flex:opsz,slnt,wdth,wght,GRAD,ROND@6..144,-10..0,25..151,1..1000,0..100,0..100&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@400&display=swap">
-
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -18,64 +16,86 @@
   <div class="source-notice">
     <span class="material-symbols-outlined">verified_user</span>
     <div>
-      <p class="body-md"><strong>This is the original source.</strong> The repository name baseline-ui is taken and held exclusively by this source.</p>
+      <p class="body-md"><strong>This is the original source.</strong> The name "baseline-ui" is reserved by this repository. Forks must not claim this name as their primary identity.</p>
+    </div>
+  </div>
+
+  <div class="license-notice">
+    <span class="material-symbols-outlined">gavel</span>
+    <div>
+      <p class="body-md"><strong>Protected content.</strong> Page text: CC BY-NC-ND 4.0 — no adaptations, no commercial use.</p>
     </div>
   </div>
 
   <header class="page-header">
-    <h1 class="display-md">Font Stack</h1>
-    <p class="body-lg" style="margin-top: 8px;">Script assignments and usage rules</p>
+    <h1 class="display-4xl">Font Stack</h1>
+    <p class="body-lg" style="margin-top: 12px;">Typefaces, variable axes, and supported writing systems</p>
   </header>
 
   <main>
     <section>
-      <h2 class="headline-sm" style="margin-bottom: 16px;">Supported Scripts</h2>
-      <div class="card-filled" style="margin-bottom: 24px;">
-        <p class="body-md" style="margin-bottom: 16px;">Only three writing systems are officially supported. This keeps the project focused, fast-loading, and high-quality. No other scripts are included or provided.</p>
-
-        <table style="width: 100%; border-collapse: collapse;">
-          <tr style="border-bottom: 1px solid var(--md-sys-color-outline-variant);">
-            <th style="text-align: left; padding: 10px;">Script</th>
-            <th style="text-align: left; padding: 10px;">Font</th>
-            <th style="text-align: left; padding: 10px;">Applied How</th>
-          </tr>
-          <tr style="border-bottom: 1px solid var(--md-sys-color-outline-variant);">
-            <td style="padding: 10px;"><strong>Latin</strong><br>English, Filipino, etc.</td>
-            <td style="padding: 10px;">Lexend</td>
-            <td style="padding: 10px;">Automatic — no class needed</td>
-          </tr>
-          <tr style="border-bottom: 1px solid var(--md-sys-color-outline-variant);">
-            <td style="padding: 10px;"><strong>Vietnamese</strong></td>
-            <td style="padding: 10px;">Lexend</td>
-            <td style="padding: 10px;">Built-in diacritics — fully supported automatically</td>
-          </tr>
-          <tr style="border-bottom: 1px solid var(--md-sys-color-outline-variant);">
-            <td style="padding: 10px;"><strong>Arabic</strong></td>
-            <td style="padding: 10px;">Readex Pro</td>
-            <td style="padding: 10px;">Add <code>class="arabic"</code> → applies right-to-left layout automatically</td>
-          </tr>
-          <tr>
-            <td style="padding: 10px;"><strong>Code / Technical</strong></td>
-            <td style="padding: 10px;">JetBrains Mono</td>
-            <td style="padding: 10px;">Wrap in <code>&lt;code&gt;</code> tag</td>
-          </tr>
-        </table>
+      <h2 class="headline-lg">Overview</h2>
+      <div class="card-filled">
+        <p>This project uses variable fonts exclusively for consistent typography with minimal payload size. Two families load on every page; additional families load only on the Variable Font Playground page.</p>
+        <p>All font resources load directly from Google Fonts via standard `@import` links. No files are hosted locally.</p>
       </div>
 
-      <h2 class="headline-sm" style="margin-bottom: 16px;">Usage Example</h2>
-      <div class="card-filled" style="margin-bottom: 24px;">
-        <pre style="background: var(--md-sys-color-surface-container-low); padding: 12px; border-radius: var(--md-shape-sm); font-family: var(--md-font-mono); font-size: 13px;">&lt;p&gt;Standard Latin text uses Lexend automatically.&lt;/p&gt;
+      <h2 class="headline-lg">Core Families</h2>
 
-&lt;p&gt;Tiếng Việt also works without any extra classes.&lt;/p&gt;
-
-&lt;p class="arabic"&gt;العربية — apply the class for correct shaping and direction.&lt;/p&gt;
-
-&lt;p&gt;Inline code looks like &lt;code&gt;this&lt;/code&gt;.&lt;/p&gt;</pre>
+      <h3 class="title-xl">Google Sans Flex</h3>
+      <div class="card-filled">
+        <p><strong>Purpose:</strong> Primary sans-serif text, headings, UI elements</p>
+        <p><strong>Axes:</strong></p>
+        <ul>
+          <li><code>opsz</code> — Optical size: 6–144</li>
+          <li><code>slnt</code> — Slant: −10 to 0 (default 0)</li>
+          <li><code>wdth</code> — Width: 25–151 (default 100)</li>
+          <li><code>wght</code> — Weight: 1–1000 (default 400)</li>
+          <li><code>GRAD</code> — Grade: −50 to 200 (default 0)</li>
+          <li><code>ROND</code> — Roundness: 0–100 (default 0)</li>
+        </ul>
+        <p><strong>Scripts:</strong> Latin, Vietnamese</p>
       </div>
 
-      <div style="display: flex; gap: 12px; flex-wrap: wrap;">
-        <a href="colors.html" class="btn-outlined">Color System</a>
-        <a href="components.html" class="btn-filled">Next: Components</a>
+      <h3 class="title-xl">Google Sans Code</h3>
+      <div class="card-filled">
+        <p><strong>Purpose:</strong> Monospace code, snippets, terminal-style text</p>
+        <p><strong>Axes:</strong></p>
+        <ul>
+          <li><code>wght</code> — Weight: 300–800 (default 400)</li>
+          <li><code>ital</code> — Italic: 0 or 1 (default 0)</li>
+          <li><code>MONO</code> — Monospace: 0–1 (default 1)</li>
+        </ul>
+        <p><strong>Scripts:</strong> Latin, Vietnamese</p>
+      </div>
+
+      <h2 class="headline-lg">VFP-Only Families</h2>
+      <div class="card-filled">
+        <p>These families load exclusively on the Variable Font Playground page and are not used elsewhere on the site:</p>
+        <ul>
+          <li><strong>Google Sans</strong> — Weight, slant, grade axes; Latin/Vietnamese only</li>
+          <li><strong>Lexend</strong> — Weight axis; Latin/Vietnamese</li>
+          <li><strong>Readex Pro</strong> — Weight + horizontal expansion (<code>HEXP</code> 0–100, default 0); Latin/Vietnamese</li>
+          <li><strong>Roboto</strong> — Weight, width, italic</li>
+          <li><strong>Roboto Mono</strong> — Weight, italic</li>
+          <li><strong>Roboto Slab</strong> — Weight</li>
+        </ul>
+        <p><em>No Arabic support is included.</em> Readex Pro is present in the VFP set but serves only Latin and Vietnamese character sets here.</p>
+      </div>
+
+      <h2 class="headline-lg">Implementation Notes</h2>
+      <div class="card-filled">
+        <p>All font links use `display=swap` to avoid render-blocking. Preconnect to `fonts.googleapis.com` and `fonts.gstatic.com` is included in `<head>` on every page for faster resolution.</p>
+        <p>Local fallbacks map to system font stacks so text remains readable before web fonts finish loading.</p>
+      </div>
+
+      <div class="nav-links">
+        <a href="index.html" class="btn-outlined">&larr; Back Home</a>
+        <a href="vfp.html" class="btn-filled">
+          <span class="material-symbols-outlined" style="font-size: 20px;">text_fields</span>
+          Open VFP
+        </a>
+        <a href="guide.html" class="btn-outlined">Guide &rarr;</a>
       </div>
     </section>
   </main>
@@ -84,6 +104,10 @@
     <a href="index.html" class="nav-item">
       <span class="material-symbols-outlined">home</span>
       <span class="label-sm">Home</span>
+    </a>
+    <a href="vfp.html" class="nav-item">
+      <span class="material-symbols-outlined">text_fields</span>
+      <span class="label-sm">VFP</span>
     </a>
     <a href="guide.html" class="nav-item">
       <span class="material-symbols-outlined">menu_book</span>
