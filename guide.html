@@ -3,14 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Usage Guide — Baseline UI Original Source">
-  <title>Usage Guide — Baseline UI</title>
+  <meta name="description" content="Guide — How to use, modify, and extend Baseline UI properly">
+  <title>Guide · Baseline UI</title>
 
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;700&display=swap">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@400;500;700&display=swap">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap">
+  <!-- Core fonts only -->
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Code:ital,wght,MONO@0,300..800,0..1;1,300..800,0..1&family=Google+Sans+Flex:opsz,slnt,wdth,wght,GRAD,ROND@6..144,-10..0,25..151,1..1000,0..100,0..100&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@400&display=swap">
-
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -18,66 +16,97 @@
   <div class="source-notice">
     <span class="material-symbols-outlined">verified_user</span>
     <div>
-      <p class="body-md"><strong>This is the original source.</strong> The repository name baseline-ui is taken and held exclusively by this source.</p>
+      <p class="body-md"><strong>This is the original source.</strong> The name "baseline-ui" is reserved by this repository. Forks must not claim this name as their primary identity.</p>
+    </div>
+  </div>
+
+  <div class="license-notice">
+    <span class="material-symbols-outlined">gavel</span>
+    <div>
+      <p class="body-md"><strong>Protected content.</strong> Page text: CC BY-NC-ND 4.0 — no adaptations, no commercial use.</p>
     </div>
   </div>
 
   <header class="page-header">
-    <h1 class="display-md">Usage Guide</h1>
-    <p class="body-lg" style="margin-top: 8px;">How to start, add pages, and stay compliant</p>
+    <h1 class="display-4xl">Guide</h1>
+    <p class="body-lg" style="margin-top: 12px;">How to use, modify, and extend this project correctly</p>
   </header>
 
   <main>
     <section>
-      <h2 class="headline-sm" style="margin-bottom: 16px;">Quick Start</h2>
-      <div class="card-filled" style="margin-bottom: 24px;">
-        <ol style="padding-left: 24px; line-height: 2;">
-          <li>Save all files into one folder — no subfolders</li>
-          <li>Open <code>index.html</code> in any modern browser</li>
-          <li>That's it — no install, no build tools, no command line</li>
+      <h2 class="headline-lg">Getting Started</h2>
+      <div class="card-filled">
+        <p>No build tools, package managers, or dependencies are required. You only need a text editor and a web browser.</p>
+        <ol>
+          <li>Copy all files to an empty folder</li>
+          <li>Open <code>index.html</code> in your browser to preview the site</li>
+          <li>Edit files in your preferred code editor; save and refresh to see changes</li>
         </ol>
+        <p>For local preview with proper link behaviour, serve the folder through a basic HTTP server if you encounter cross-origin restrictions.</p>
       </div>
 
-      <h2 class="headline-sm" style="margin-bottom: 16px;">Adding a New Page</h2>
-      <div class="card-filled" style="margin-bottom: 24px;">
-        <p class="body-md" style="margin-bottom: 12px;">Copy <code>index.html</code>, save as <code>new-page.html</code> in the same folder. Update:</p>
-        <ul style="padding-left: 24px; margin-bottom: 16px; line-height: 2;">
-          <li>Page <code>&lt;title&gt;</code> and meta description</li>
-          <li>Main content area — your new material</li>
-          <li>Navigation bar links in <strong>all</strong> pages so they point to the new file</li>
+      <h2 class="headline-lg">File Layout</h2>
+      <div class="card-filled">
+        <p>All files sit in the root directory — no subfolders are used.</p>
+        <ul>
+          <li><code>index.html</code> — Home page</li>
+          <li><code>vfp.html</code> — Variable Font Playground (loads extra fonts and scripts)</li>
+          <li><code>fonts.html</code> — Typography reference</li>
+          <li><code>guide.html</code> — This page</li>
+          <li><code>source.html</code> — Licence, attribution, and file list</li>
+          <li><code>about.html</code> — Project purpose and identity</li>
+          <li><code>styles.css</code> — Shared styles across all pages</li>
+          <li><code>variable.css</code> — Styles specific to the VFP page</li>
+          <li><code>main.js</code> — Base site behaviour (minimal, extensible)</li>
+          <li><code>variable.js</code> — VFP parsing and rendering engine</li>
         </ul>
-        <p class="body-md"><strong>Important:</strong> New displayed text falls under <strong>CC BY-NC-ND</strong> — keep it original, do not copy from elsewhere, no commercial use. Code you write is yours — modify freely.</p>
       </div>
 
-      <h2 class="headline-sm" style="margin-bottom: 16px;">License Rules At A Glance</h2>
-      <div class="card-filled" style="margin-bottom: 24px;">
-        <table style="width: 100%; border-collapse: collapse;">
-          <tr style="border-bottom: 1px solid var(--md-sys-color-outline-variant);">
-            <th style="text-align: left; padding: 10px;">What</th>
-            <th style="text-align: left; padding: 10px;">You Can</th>
-            <th style="text-align: left; padding: 10px;">You Cannot</th>
-          </tr>
-          <tr style="border-bottom: 1px solid var(--md-sys-color-outline-variant);">
-            <td style="padding: 10px;">Code (.html, .css, .js)</td>
-            <td style="padding: 10px;">Modify, adapt, use commercially</td>
-            <td style="padding: 10px;">Remove original author credit</td>
-          </tr>
-          <tr style="border-bottom: 1px solid var(--md-sys-color-outline-variant);">
-            <td style="padding: 10px;">Displayed text on pages</td>
-            <td style="padding: 10px;">Read, share with credit</td>
-            <td style="padding: 10px;">Rewrite, monetize, claim as own</td>
-          </tr>
-          <tr>
-            <td style="padding: 10px;">Project identity</td>
-            <td style="padding: 10px;">Link back to original source</td>
-            <td style="padding: 10px;">Claim as your own project</td>
-          </tr>
-        </table>
+      <h2 class="headline-lg">Licence Rules — Read Carefully</h2>
+      <div class="card-filled">
+        <p>Different parts carry different licence terms — they are not interchangeable:</p>
+        <ul>
+          <li><strong>Code files</strong> (<code>.html</code> markup, <code>.css</code>, <code>.js</code>): MIT Licence — reuse freely, include copyright notice</li>
+          <li><strong>Website text content</strong> across all pages: CC BY-NC-ND 4.0 — you may not adapt, remix, or use it for commercial purposes</li>
+          <li><strong>Standalone text files</strong> such as <code>README.md</code>: CC BY-NC 4.0</li>
+          <li><strong>Code snippets displayed within the site</strong>: CC BY-NC-SA 4.0</li>
+        </ul>
+        <p>The "baseline-ui" name and repository identity belong exclusively to the original source. Forks may not present themselves as the primary or official source.</p>
       </div>
 
-      <div style="display: flex; gap: 12px; flex-wrap: wrap;">
-        <a href="components.html" class="btn-outlined">Components</a>
-        <a href="source.html" class="btn-filled">Next: Source & Licenses</a>
+      <h2 class="headline-lg">Adding New Pages</h2>
+      <div class="card-filled">
+        <p>To keep consistency, copy the structure from an existing page such as <code>index.html</code>:</p>
+        <ul>
+          <li>Include both notice blocks at the very top of <code>&lt;body&gt;</code></li>
+          <li>Load <code>styles.css</code> and the core font links in <code>&lt;head&gt;</code></li>
+          <li>Update the bottom navigation bar so every page links to all six destinations</li>
+          <li>Add the new file to the nav list on existing pages</li>
+          <li>Set the correct <code>class="nav-item active"</code> on the current page link</li>
+        </ul>
+        <p>Do not add emoji — use Material Symbols icons instead where needed.</p>
+      </div>
+
+      <h2 class="headline-lg">Modifying Styles</h2>
+      <div class="card-filled">
+        <p>Keep all shared base styles in <code>styles.css</code>. If a new feature or page needs unique rules, put them in a separate dedicated CSS file and link it only on that page. This keeps the shared stylesheet lightweight and avoids unintended side effects.</p>
+        <p>Adjust values in the <code>:root</code> block of <code>styles.css</code> to change colours, spacing, or sizing across the whole site in one go.</p>
+      </div>
+
+      <h2 class="headline-lg">Troubleshooting</h2>
+      <div class="card-filled">
+        <ul>
+          <li>Fonts not loading — check your internet connection; the fonts load from Google Fonts CDN</li>
+          <li>Icons missing — ensure the Material Symbols link is present in <code>&lt;head&gt;</code></li>
+          <li>JavaScript not running — confirm the <code>&lt;script src="..."&gt;</code> tags point to the correct filenames</li>
+          <li>Page looks unstyled — verify <code>styles.css</code> is in the same folder as the HTML file</li>
+        </ul>
+      </div>
+
+      <div class="nav-links">
+        <a href="index.html" class="btn-outlined">&larr; Back Home</a>
+        <a href="fonts.html" class="btn-outlined">&larr; Font Stack</a>
+        <a href="source.html" class="btn-outlined">Source &rarr;</a>
       </div>
     </section>
   </main>
@@ -86,6 +115,10 @@
     <a href="index.html" class="nav-item">
       <span class="material-symbols-outlined">home</span>
       <span class="label-sm">Home</span>
+    </a>
+    <a href="vfp.html" class="nav-item">
+      <span class="material-symbols-outlined">text_fields</span>
+      <span class="label-sm">VFP</span>
     </a>
     <a href="guide.html" class="nav-item active">
       <span class="material-symbols-outlined">menu_book</span>
