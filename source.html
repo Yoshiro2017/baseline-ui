@@ -3,14 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Source & Licenses — Baseline UI Original Source">
-  <title>Source & Licenses — Baseline UI</title>
+  <meta name="description" content="Source — File structure, licences, and attribution">
+  <title>Source · Baseline UI</title>
 
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;700&display=swap">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@400;500;700&display=swap">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap">
+  <!-- Core fonts only -->
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Code:ital,wght,MONO@0,300..800,0..1;1,300..800,0..1&family=Google+Sans+Flex:opsz,slnt,wdth,wght,GRAD,ROND@6..144,-10..0,25..151,1..1000,0..100,0..100&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@400&display=swap">
-
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -18,50 +16,92 @@
   <div class="source-notice">
     <span class="material-symbols-outlined">verified_user</span>
     <div>
-      <p class="body-md"><strong>This is the original source.</strong> The repository name baseline-ui is taken and held exclusively by this source.</p>
+      <p class="body-md"><strong>This is the original source.</strong> The name "baseline-ui" is reserved by this repository. Forks must not claim this name as their primary identity.</p>
+    </div>
+  </div>
+
+  <div class="license-notice">
+    <span class="material-symbols-outlined">gavel</span>
+    <div>
+      <p class="body-md"><strong>Protected content.</strong> Page text: CC BY-NC-ND 4.0 — no adaptations, no commercial use.</p>
     </div>
   </div>
 
   <header class="page-header">
-    <h1 class="display-md">Source & Licenses</h1>
-    <p class="body-lg" style="margin-top: 8px;">File structure and legal terms explained</p>
+    <h1 class="display-4xl">Source & Licence</h1>
+    <p class="body-lg" style="margin-top: 12px;">File list, terms, and attribution</p>
   </header>
 
   <main>
     <section>
-      <h2 class="headline-sm" style="margin-bottom: 16px;">File Structure</h2>
-      <div class="card-filled" style="margin-bottom: 24px;">
-        <pre style="font-family: var(--md-font-mono); line-height: 1.8;">baseline-ui/
-├── index.html        ← Home / landing page
-├── colors.html       ← Color system reference
-├── fonts.html        ← Font stack & script rules
-├── components.html   ← UI component examples
-├── guide.html        ← Usage & contribution guide
-├── source.html       ← This page — licenses & files
-├── about.html        ← Project background & team
-├── styles.css        ← All CSS variables + design rules
-├── main.js           ← Navigation, notices, interactivity
-├── LICENSE-CODE      ← MIT License for code files
-├── LICENSE-TEXTFILES ← CC BY-NC 4.0 for docs
-├── LICENSE-SNIPPETS  ← CC BY-NC-SA 4.0 for embedded examples
-└── README.md         ← GitHub overview & quick start</pre>
+      <h2 class="headline-lg">Complete File List</h2>
+      <div class="card-filled">
+        <p>All files reside in the root directory — no subfolders are used.</p>
+        <ul>
+          <li><code>index.html</code> — Home / landing page</li>
+          <li><code>vfp.html</code> — Variable Font Playground (loads extended font set + VFP scripts)</li>
+          <li><code>fonts.html</code> — Font stack reference and axis documentation</li>
+          <li><code>guide.html</code> — Usage, modification, and contribution guide</li>
+          <li><code>source.html</code> — This page</li>
+          <li><code>about.html</code> — Project identity, philosophy, and acknowledgements</li>
+          <li><code>styles.css</code> — Shared core styles (all pages)</li>
+          <li><code>variable.css</code> — VFP page–specific styles</li>
+          <li><code>main.js</code> — Base site behaviour and shared utilities</li>
+          <li><code>variable.js</code> — VFP command parser, renderer, and example loader</li>
+          <li><code>README.md</code> — Project overview and quick-start (CC BY-NC 4.0)</li>
+        </ul>
       </div>
 
-      <h2 class="headline-sm" style="margin-bottom: 16px;">Three Licenses Explained</h2>
-      <div class="card-filled" style="margin-bottom: 24px;">
-        <h3 class="title-md" style="margin-bottom: 8px;">1. Code Files — MIT License</h3>
-        <p class="body-md" style="margin-bottom: 16px;"><code>.html</code>, <code>.css</code>, <code>.js</code> → Freely modify, adapt, rebuild, use commercially. Must include original copyright notice.</p>
+      <h2 class="headline-lg">Licence Breakdown</h2>
+      <div class="card-filled">
+        <p>Different components are covered by different licence agreements. These are not interchangeable — check which applies to what you intend to use:</p>
 
-        <h3 class="title-md" style="margin-bottom: 8px;">2. Documentation & Text Files — CC BY-NC 4.0</h3>
-        <p class="body-md" style="margin-bottom: 16px;"><code>README.md</code>, guides, non-display text → Share with credit. No commercial use. No selling or placing behind ads.</p>
+        <h3 class="title-xl">Code Files</h3>
+        <ul>
+          <li>Markup (<code>.html</code> excluding visible text content)</li>
+          <li>Stylesheets (<code>.css</code>)</li>
+          <li>Scripts (<code>.js</code>)</li>
+        </ul>
+        <p><strong>Licence:</strong> MIT Licence</p>
+        <p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
+        <p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
+        <p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
 
-        <h3 class="title-md" style="margin-bottom: 8px;">3. Page Content — CC BY-NC-ND 4.0</h3>
-        <p class="body-md">Text visitors read on the website → No rewriting, no adaptation, no commercial use. Must share exactly as-is with credit.</p>
+        <h3 class="title-xl">Website Text Content</h3>
+        <p>All visible text, instructional material, descriptions, and prose across every page of the site.</p>
+        <p><strong>Licence:</strong> CC BY-NC-ND 4.0</p>
+        <p>You are free to share — copy and redistribute the material in any medium or format — as long as you give appropriate credit, provide a link to the licence, and indicate if changes were made. You may not modify the material in any way. You may not use the material for commercial purposes.</p>
+
+        <h3 class="title-xl">Standalone Text Files</h3>
+        <p>Documents such as <code>README.md</code> and other plain-text explanatory files.</p>
+        <p><strong>Licence:</strong> CC BY-NC 4.0</p>
+        <p>You may share and adapt the material, again without commercial use, provided you credit the original source.</p>
+
+        <h3 class="title-xl">Code Snippets Displayed Within the Site</h3>
+        <p>Source code examples that appear as inline or block samples within page text.</p>
+        <p><strong>Licence:</strong> CC BY-NC-SA 4.0</p>
+        <p>If you share these samples, you must distribute your contributions under the same licence. No commercial use permitted.</p>
       </div>
 
-      <div style="display: flex; gap: 12px; flex-wrap: wrap;">
-        <a href="guide.html" class="btn-outlined">Usage Guide</a>
-        <a href="about.html" class="btn-filled">Next: About</a>
+      <h2 class="headline-lg">Attribution</h2>
+      <div class="card-filled">
+        <ul>
+          <li><strong>Material Design</strong> — Design system by Google; icons via Material Symbols (licensed under Apache 2.0)</li>
+          <li><strong>Google Sans Flex / Google Sans Code</strong> — Typography by Google; served through Google Fonts</li>
+          <li><strong>Third-party typefaces on VFP</strong> — Lexend, Readex Pro, Roboto families; distributed under the SIL Open Font Licence</li>
+        </ul>
+        <p>No modified font files are included; all resources load from their respective CDN endpoints.</p>
+      </div>
+
+      <h2 class="headline-lg">Repository Identity</h2>
+      <div class="card-filled">
+        <p>The identifier <strong>baseline-ui</strong> is assigned exclusively to this original source repository. Forks and derivatives must not present themselves as the upstream or primary location for this project. If distributing a modified version, you must clearly state the original source location and use a distinct project name.</p>
+      </div>
+
+      <div class="nav-links">
+        <a href="index.html" class="btn-outlined">&larr; Back Home</a>
+        <a href="guide.html" class="btn-outlined">&larr; Guide</a>
+        <a href="about.html" class="btn-outlined">About &rarr;</a>
       </div>
     </section>
   </main>
@@ -70,6 +110,10 @@
     <a href="index.html" class="nav-item">
       <span class="material-symbols-outlined">home</span>
       <span class="label-sm">Home</span>
+    </a>
+    <a href="vfp.html" class="nav-item">
+      <span class="material-symbols-outlined">text_fields</span>
+      <span class="label-sm">VFP</span>
     </a>
     <a href="guide.html" class="nav-item">
       <span class="material-symbols-outlined">menu_book</span>
