@@ -1,329 +1,217 @@
-/* ==============================================
-   Baseline UI — Original Source
-   Material 3 Design System core styles
-   Supported scripts: Latin · Vietnamese · Arabic
-   Source code under MIT License
-   ============================================== */
+/* Baseline UI — Shared Core Styles
+ * Applies to all pages; no page-specific styles here
+ * License: MIT License
+ */
 
-/* --------------------------
-   ROOT VARIABLES — Central storage
-   Change values HERE → updates EVERYWHERE automatically
-   -------------------------- */
 :root {
-  /* --- COLOR PALETTE --- */
-  --md-sys-color-primary: #415F91;
-  --md-sys-color-on-primary: #FFFFFF;
-  --md-sys-color-primary-container: #D6E3FF;
-  --md-sys-color-on-primary-container: #001C3B;
-  --md-sys-color-secondary: #565F71;
-  --md-sys-color-on-secondary: #FFFFFF;
-  --md-sys-color-secondary-container: #DAE2F8;
-  --md-sys-color-on-secondary-container: #131C2B;
-  --md-sys-color-tertiary: #705575;
-  --md-sys-color-on-tertiary: #FFFFFF;
-  --md-sys-color-tertiary-container: #FAD8FF;
-  --md-sys-color-on-tertiary-container: #28132E;
-  --md-sys-color-error: #BA1A1A;
-  --md-sys-color-on-error: #FFFFFF;
-  --md-sys-color-error-container: #FFDAD6;
-  --md-sys-color-on-error-container: #410002;
-  --md-sys-color-surface: #F9F9FF;
-  --md-sys-color-on-surface: #1A1C1E;
-  --md-sys-color-surface-dim: #E0E2EB;
-  --md-sys-color-surface-bright: #FBF8FF;
-  --md-sys-color-surface-container-lowest: #FFFFFF;
-  --md-sys-color-surface-container-low: #F5F3FB;
-  --md-sys-color-surface-container: #EFECF4;
-  --md-sys-color-surface-container-high: #E9E9F2;
-  --md-sys-color-surface-container-highest: #E3E3EB;
-  --md-sys-color-outline: #75777F;
-  --md-sys-color-outline-variant: #C5C6D0;
+  /* Spacing scale */
+  --space-xs: 0.5rem;    /* 8px */
+  --space-sm: 0.75rem;   /* 12px */
+  --space-md: 1rem;      /* 16px */
+  --space-lg: 1.5rem;    /* 24px */
 
-  /* --- FONT FAMILIES — Matched to supported scripts --- */
-  --md-font-sans: 'Lexend', system-ui, -apple-system, sans-serif;
-  /* ↑ Default — covers Latin and Vietnamese everywhere */
-  --md-font-arabic: 'Readex Pro', sans-serif;
-  /* ↑ Applied ONLY to Arabic text — includes RTL shaping */
-  --md-font-mono: 'JetBrains Mono', Consolas, monospace;
-  /* ↑ Code, numbers, technical text — Latin only */
-  --md-font-icon: 'Material Symbols Outlined';
-  /* ↑ Icons — emojis never used */
+  /* Typography scale */
+  --font-xs: 0.75rem;    /* 12px */
+  --font-sm: 0.875rem;   /* 14px */
+  --font-base: 1rem;     /* 16px */
+  --font-lg: 1.125rem;   /* 18px */
+  --font-xl: 1.25rem;    /* 20px */
+  --font-2xl: 1.5rem;    /* 24px */
+  --font-3xl: 2rem;      /* 32px */
+  --font-4xl: 2.25rem;   /* 36px */
 
-  /* --- CORNER ROUNDING --- */
-  --md-shape-xs: 4px;
-  --md-shape-sm: 8px;
-  --md-shape-md: 12px;
-  --md-shape-lg: 16px;
-  --md-shape-xl: 28px;
-  --md-shape-full: 9999px;
+  /* Corner radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-pill: 9999px;
 
-  /* --- ELEVATION / SHADOWS --- */
-  --md-elevation-0: none;
-  --md-elevation-1: 0 1px 2px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.10);
-  --md-elevation-2: 0 1px 3px rgba(0,0,0,0.06), 0 2px 6px rgba(0,0,0,0.10);
-  --md-elevation-3: 0 4px 8px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.12);
-  --md-elevation-4: 0 2px 4px rgba(0,0,0,0.08), 0 4px 8px rgba(0,0,0,0.12);
-  --md-elevation-5: 0 4px 12px rgba(0,0,0,0.10), 0 8px 16px rgba(0,0,0,0.14);
+  /* Font stacks */
+  --font-sans: "Google Sans Flex", system-ui, -apple-system, sans-serif;
+  --font-mono: "Google Sans Code", Consolas, monospace;
 
-  /* --- SPACING SCALE --- */
-  --md-space-1: 4px;
-  --md-space-2: 8px;
-  --md-space-3: 12px;
-  --md-space-4: 16px;
-  --md-space-6: 24px;
-  --md-space-8: 32px;
-  --md-space-12: 48px;
-}
-
-/* --------------------------
-   DARK MODE — auto-switch with system setting
-   -------------------------- */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --md-sys-color-primary: #A8C7FF;
-    --md-sys-color-on-primary: #0B305F;
-    --md-sys-color-primary-container: #284778;
-    --md-sys-color-on-primary-container: #D6E3FF;
-    --md-sys-color-secondary: #BEC7DC;
-    --md-sys-color-on-secondary: #283141;
-    --md-sys-color-secondary-container: #3E4759;
-    --md-sys-color-on-secondary-container: #DAE2F8;
-    --md-sys-color-tertiary: #DFBDE4;
-    --md-sys-color-on-tertiary: #3F2845;
-    --md-sys-color-tertiary-container: #573E5D;
-    --md-sys-color-on-tertiary-container: #FAD8FF;
-    --md-sys-color-error: #FFB4AB;
-    --md-sys-color-on-error: #690005;
-    --md-sys-color-error-container: #930009;
-    --md-sys-color-on-error-container: #FFDAD6;
-    --md-sys-color-surface: #111318;
-    --md-sys-color-on-surface: #E3E2E9;
-    --md-sys-color-surface-dim: #2F3037;
-    --md-sys-color-surface-bright: #37393F;
-    --md-sys-color-surface-container-lowest: #0C0E13;
-    --md-sys-color-surface-container-low: #1A1C20;
-    --md-sys-color-surface-container: #1E2025;
-    --md-sys-color-surface-container-high: #282A2F;
-    --md-sys-color-surface-container-highest: #33353B;
-    --md-sys-color-outline: #8E9099;
-    --md-sys-color-outline-variant: #43474E;
-  }
-}
-
-/* --------------------------
-   BASE RESET — remove browser defaults
-   -------------------------- */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box; /* Width includes border → no layout surprises */
-}
-
-html {
-  font-size: 16px;
-  scroll-behavior: smooth;
+  /* Material 3 Light Theme — Core Palette */
+  --md-sys-color-primary: #6750a4;
+  --md-sys-color-on-primary: #ffffff;
+  --md-sys-color-surface: #fffbfe;
+  --md-sys-color-surface-variant: #e7e0eb;
+  --md-sys-color-on-surface: #1c1b1f;
+  --md-sys-color-on-surface-variant: #49454f;
+  --md-sys-color-outline: #79747e;
+  --md-sys-color-outline-variant: #c4c0c9;
+  --md-sys-color-secondary-container: #e8def8;
+  --md-sys-color-on-secondary-container: #1d192b;
 }
 
 body {
-  font-family: var(--md-font-sans);
-  font-weight: 400;
-  line-height: 1.5;
-  color: var(--md-sys-color-on-surface);
+  margin: 0;
+  font-family: var(--font-sans);
   background-color: var(--md-sys-color-surface);
-  min-height: 100vh;
+  color: var(--md-sys-color-on-surface);
+  line-height: 1.5;
+}
+
+/* Source & License Notices */
+.source-notice,
+.license-notice {
   display: flex;
-  flex-direction: column;
+  gap: var(--space-md);
+  align-items: flex-start;
+  padding: var(--space-md) var(--space-lg);
+  border-bottom: 1px solid var(--md-sys-color-outline-variant);
 }
 
-/* --------------------------
-   SCRIPT-SPECIFIC OVERRIDES
-   -------------------------- */
-.arabic {
-  font-family: var(--md-font-arabic);
-  direction: rtl; /* Right-to-left layout applied automatically */
+.source-notice {
+  background-color: #eef2ff;
 }
 
-/* --------------------------
-   TYPOGRAPHY — Material 3 type scale
-   -------------------------- */
-.display-lg { font-size: 57px; line-height: 64px; letter-spacing: -0.25px; font-weight: 400; }
-.display-md { font-size: 45px; line-height: 52px; font-weight: 400; }
-.display-sm { font-size: 36px; line-height: 44px; font-weight: 400; }
-.headline-lg { font-size: 32px; line-height: 40px; font-weight: 400; }
-.headline-md { font-size: 28px; line-height: 36px; font-weight: 400; }
-.headline-sm { font-size: 24px; line-height: 32px; font-weight: 400; }
-.title-lg { font-size: 22px; line-height: 28px; font-weight: 500; }
-.title-md { font-size: 16px; line-height: 24px; letter-spacing: 0.1px; font-weight: 500; }
-.title-sm { font-size: 14px; line-height: 20px; letter-spacing: 0.1px; font-weight: 500; }
-.body-lg  { font-size: 16px; line-height: 24px; letter-spacing: 0.5px; }
-.body-md  { font-size: 14px; line-height: 20px; letter-spacing: 0.25px; }
-.body-sm  { font-size: 12px; line-height: 16px; letter-spacing: 0.4px; }
-.label-lg { font-size: 14px; line-height: 20px; letter-spacing: 0.1px; font-weight: 500; }
-.label-md { font-size: 12px; line-height: 16px; letter-spacing: 0.5px; font-weight: 500; }
-.label-sm { font-size: 11px; line-height: 16px; letter-spacing: 0.5px; font-weight: 500; }
-
-/* --------------------------
-   ICON SYSTEM — Material Symbols only
-   -------------------------- */
-.material-symbols-outlined {
-  font-family: var(--md-font-icon);
-  font-weight: normal;
-  font-style: normal;
-  font-size: 24px;
-  line-height: 1;
-  letter-spacing: normal;
-  text-transform: none;
-  display: inline-block;
-  vertical-align: middle;
-  white-space: nowrap;
-  direction: ltr;
-  -webkit-font-smoothing: antialiased;
+.license-notice {
+  background-color: #fff3e0;
 }
-.icon-sm { font-size: 20px; }
-.icon-lg { font-size: 32px; }
 
-/* --------------------------
-   BUTTONS
-   -------------------------- */
-.btn-filled {
+.source-notice .material-symbols-outlined,
+.license-notice .material-symbols-outlined {
+  flex-shrink: 0;
+}
+
+/* Page Header */
+.page-header {
+  padding: var(--space-lg);
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+h1.display-4xl {
+  font-size: var(--font-4xl);
+  font-weight: 700;
+  margin: 0;
+}
+
+h2.headline-lg {
+  font-size: var(--font-2xl);
+  font-weight: 600;
+  margin: 0 0 var(--space-md);
+}
+
+h3.title-xl {
+  font-size: var(--font-xl);
+  font-weight: 600;
+  margin: var(--space-lg) 0 var(--space-sm);
+}
+
+p.body-lg {
+  font-size: var(--font-lg);
+  margin: 0;
+}
+
+p.body-md {
+  margin: 0;
+}
+
+p.body-sm {
+  font-size: var(--font-sm);
+  margin: 0;
+}
+
+/* Cards */
+.card-filled {
+  padding: var(--space-lg);
+  background-color: var(--md-sys-color-secondary-container);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-lg);
+}
+
+/* Buttons */
+.btn-filled,
+.btn-outlined {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: var(--radius-pill);
+  font-family: inherit;
+  font-size: var(--font-base);
+  cursor: pointer;
   border: none;
-  border-radius: var(--md-shape-full);
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.btn-filled:hover,
+.btn-outlined:hover {
+  opacity: 0.9;
+}
+
+.btn-filled {
   background-color: var(--md-sys-color-primary);
   color: var(--md-sys-color-on-primary);
-  font-family: inherit;
-  font-size: 14px;
-  font-weight: 500;
-  padding: 10px 24px;
-  cursor: pointer;
-  transition: filter 150ms ease, transform 100ms ease;
 }
-.btn-filled:hover { filter: brightness(1.08); }
-.btn-filled:active { transform: scale(0.98); }
 
 .btn-outlined {
-  border: 1px solid var(--md-sys-color-outline);
-  border-radius: var(--md-shape-full);
   background: transparent;
   color: var(--md-sys-color-primary);
-  font-family: inherit;
-  font-size: 14px;
-  font-weight: 500;
-  padding: 10px 24px;
-  cursor: pointer;
-  transition: background-color 150ms ease;
-}
-.btn-outlined:hover {
-  background-color: color-mix(in srgb, var(--md-sys-color-primary) 8%, transparent);
+  border: 1px solid var(--md-sys-color-outline);
 }
 
-/* --------------------------
-   CARDS
-   -------------------------- */
-.card-filled {
-  background-color: var(--md-sys-color-surface-container);
-  border-radius: var(--md-shape-md);
-  padding: var(--md-space-6);
-  transition: box-shadow 200ms ease;
-}
-.card-filled:hover { box-shadow: var(--md-elevation-1); }
-
-/* --------------------------
-   NOTICE BANNERS
-   -------------------------- */
-.license-notice {
-  background-color: var(--md-sys-color-error-container);
-  color: var(--md-sys-color-on-error-container);
-  padding: var(--md-space-3) var(--md-space-4);
+/* Navigation Links Between Pages */
+.nav-links {
   display: flex;
-  align-items: flex-start;
-  gap: var(--md-space-3);
-}
-.source-notice {
-  background-color: var(--md-sys-color-primary-container);
-  color: var(--md-sys-color-on-primary-container);
-  padding: var(--md-space-3) var(--md-space-4);
-  display: flex;
-  align-items: flex-start;
-  gap: var(--md-space-3);
-}
-.license-notice a, .source-notice a {
-  color: inherit;
-  text-decoration: underline;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+  margin-top: var(--space-lg);
 }
 
-/* --------------------------
-   PAGE STRUCTURE
-   -------------------------- */
-.page-header {
-  padding: var(--md-space-8) var(--md-space-4) var(--md-space-6);
-  text-align: center;
-}
-main {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 var(--md-space-4) 88px; /* Bottom padding avoids nav overlap */
-  flex: 1;
-}
-section { margin-bottom: var(--md-space-12); }
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: var(--md-space-4);
-}
-code {
-  font-family: var(--md-font-mono);
-  background-color: var(--md-sys-color-surface-container-low);
-  padding: 2px 6px;
-  border-radius: var(--md-shape-xs);
-  font-size: 0.9em;
-}
-.script-demo {
-  padding: var(--md-space-4);
-  background-color: var(--md-sys-color-surface-container-low);
-  border-radius: var(--md-shape-sm);
-  margin-top: var(--md-space-4);
-  line-height: 2;
-}
-
-/* --------------------------
-   BOTTOM NAVIGATION — Fixed always at screen bottom
-   -------------------------- */
+/* Bottom Navigation Bar */
 .nav-bar {
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: var(--md-sys-color-surface-container);
   display: flex;
   justify-content: space-around;
-  padding: var(--md-space-2) 0;
-  box-shadow: var(--md-elevation-2);
-  z-index: 100; /* Keep above all other content */
+  padding: 10px 0;
+  background-color: var(--md-sys-color-surface);
+  border-top: 1px solid var(--md-sys-color-outline-variant);
 }
+
 .nav-item {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--md-space-1);
+  gap: 4px;
   color: var(--md-sys-color-on-surface);
   text-decoration: none;
-  padding: var(--md-space-2) var(--md-space-4);
-  border-radius: var(--md-shape-full);
-  transition: background-color 150ms ease;
+  opacity: 0.6;
+  font-size: var(--font-xs);
 }
-.nav-item.active {
-  background-color: var(--md-sys-color-secondary-container);
-  color: var(--md-sys-color-on-secondary-container);
-}
-.nav-item .label-sm { margin-top: 2px; }
 
-/* --------------------------
-   REDUCED MOTION — Respect system "turn off animations" setting
-   -------------------------- */
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    transition-duration: 0.01ms !important;
-  }
-  html { scroll-behavior: auto; }
+.nav-item.active {
+  opacity: 1;
+  color: var(--md-sys-color-primary);
+}
+
+/* Main Content Container */
+main {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: var(--space-lg);
+  padding-bottom: 80px;
+}
+
+/* Inline Code */
+code {
+  font-family: var(--font-mono);
+  background-color: rgba(0, 0, 0, 0.06);
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+  font-size: 0.9em;
+}
+
+/* Lists */
+ul, ol {
+  margin: 0.5rem 0;
+  padding-left: 1.5rem;
+}
+
+li {
+  margin-bottom: 0.375rem;
 }
