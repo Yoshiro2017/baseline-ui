@@ -3,14 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="About Baseline UI — Original Source">
-  <title>About — Baseline UI</title>
+  <meta name="description" content="About — Project purpose, philosophy, and identity">
+  <title>About · Baseline UI</title>
 
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;700&display=swap">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@400;500;700&display=swap">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap">
+  <!-- Core fonts only -->
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Code:ital,wght,MONO@0,300..800,0..1;1,300..800,0..1&family=Google+Sans+Flex:opsz,slnt,wdth,wght,GRAD,ROND@6..144,-10..0,25..151,1..1000,0..100,0..100&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@400&display=swap">
-
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -18,48 +16,73 @@
   <div class="source-notice">
     <span class="material-symbols-outlined">verified_user</span>
     <div>
-      <p class="body-md"><strong>This is the original source.</strong> The repository name baseline-ui is taken and held exclusively by this source.</p>
+      <p class="body-md"><strong>This is the original source.</strong> The name "baseline-ui" is reserved by this repository. Forks must not claim this name as their primary identity.</p>
+    </div>
+  </div>
+
+  <div class="license-notice">
+    <span class="material-symbols-outlined">gavel</span>
+    <div>
+      <p class="body-md"><strong>Protected content.</strong> Page text: CC BY-NC-ND 4.0 — no adaptations, no commercial use.</p>
     </div>
   </div>
 
   <header class="page-header">
-    <h1 class="display-md">About Baseline UI</h1>
-    <p class="body-lg" style="margin-top: 8px;">Purpose, philosophy, and supported languages</p>
+    <h1 class="display-4xl">About Baseline UI</h1>
+    <p class="body-lg" style="margin-top: 12px;">Purpose, design philosophy, and project identity</p>
   </header>
 
   <main>
     <section>
-      <h2 class="headline-sm" style="margin-bottom: 16px;">Why This Exists</h2>
-      <div class="card-filled" style="margin-bottom: 24px;">
-        <p class="body-md" style="margin-bottom: 12px;">Baseline UI was built to provide a clean, accessible, no-build interface system that works well across multiple languages without unnecessary complexity. No Node.js, no bundlers, no heavy dependencies — just plain files that open in any browser.</p>
-        <p class="body-md">It follows Material 3 design principles but keeps the codebase small, flat, and easy to understand or extend.</p>
+      <h2 class="headline-lg">What This Is</h2>
+      <div class="card-filled">
+        <p>Baseline UI is a minimal, framework-free website template built according to Material Design guidelines. It prioritises clarity, performance, and plain web standards — no build chain, no dependencies, no lock-in.</p>
+        <p>Every resource loads from public, widely available sources. The entire project lives in plain text files you can read and edit in any editor.</p>
       </div>
 
-      <h2 class="headline-sm" style="margin-bottom: 16px;">Supported Languages & Scripts</h2>
-      <div class="card-filled" style="margin-bottom: 24px;">
-        <p class="body-md" style="margin-bottom: 16px;">Only three writing systems are officially supported. Focusing on a small set ensures high typographic quality and fast page loads.</p>
-        <ul style="padding-left: 24px; line-height: 2;">
-          <li><strong>Latin</strong> — English, Filipino, Spanish, French, and other Western/European languages</li>
-          <li><strong>Vietnamese</strong> — Full diacritic coverage built into Lexend</li>
-          <li><strong>Arabic</strong> — Correct right-to-left layout and glyph shaping via Readex Pro</li>
-        </ul>
-        <p class="body-md" style="margin-top: 16px;">Support for additional scripts is not planned at this time.</p>
-      </div>
-
-      <h2 class="headline-sm" style="margin-bottom: 16px;">Design Rules We Follow</h2>
-      <div class="card-filled" style="margin-bottom: 24px;">
-        <ul style="padding-left: 24px; line-height: 2;">
-          <li>Zero emojis — all icons use Material Symbols</li>
-          <li>No <code>!important</code> overrides in CSS</li>
-          <li>Respect system settings — dark mode and reduced motion</li>
-          <li>WCAG accessible contrast in both themes</li>
-          <li>Everything in root folder — no confusing structure</li>
+      <h2 class="headline-lg">Design Principles</h2>
+      <div class="card-filled">
+        <ul>
+          <li><strong>One language only</strong> — Standard HTML, CSS, and JavaScript. No preprocessors or compilers.</li>
+          <li><strong>Variable-first typography</strong> — Single-file font families with continuous weight/width axes instead of multiple static files.</li>
+          <li><strong>Icons as glyphs</strong> — Material Symbols only; no emoji, no image sprites.</li>
+          <li><strong>Scope separation</strong> — Shared styles in one file; page-specific styles in separate files. No cross-contamination.</li>
+          <li><strong>Strict licensing</strong> — Code and text carry distinct terms. Commercial use and derivative text content are restricted.</li>
+          <li><strong>Flat file structure</strong> — Everything in root. No subfolders, no complex paths.</li>
         </ul>
       </div>
 
-      <div style="display: flex; gap: 12px; flex-wrap: wrap;">
-        <a href="source.html" class="btn-outlined">Source & Licenses</a>
-        <a href="index.html" class="btn-filled">Back Home</a>
+      <h2 class="headline-lg">Supported Writing Systems</h2>
+      <div class="card-filled">
+        <p>Core pages are optimised for:</p>
+        <ul>
+          <li>Latin — Full coverage including diacritics</li>
+          <li>Vietnamese — Additional tone marks and extended Latin characters</li>
+        </ul>
+        <p>Arabic is <strong>not</strong> included in the current font configuration.</p>
+      </div>
+
+      <h2 class="headline-lg">Naming & Identity</h2>
+      <div class="card-filled">
+        <p>The name <strong>Baseline UI</strong> and identifier <code>baseline-ui</code> belong to this original source repository. They are not open for adoption by forks or derivative projects. If you redistribute modified versions, you must use a distinct name and clearly link back to this location.</p>
+        <p>This policy exists to prevent fragmentation and impersonation, not to restrict the use of the code itself — which is MIT-licensed.</p>
+      </div>
+
+      <h2 class="headline-lg">About the VFP</h2>
+      <div class="card-filled">
+        <p>The Variable Font Playground is a self-contained experimental tool built into the site. It extends the base font set and runs an independent parser and renderer so typographic exploration does not affect the rest of the site.</p>
+        <p>Commands are stripped before display — only the visual result appears. This demonstrates how variable fonts can be manipulated through CSS properties and font axes in real time.</p>
+      </div>
+
+      <h2 class="headline-lg">Future Directions</h2>
+      <div class="card-filled">
+        <p>New pages may be added as needed, but the project will remain intentionally small and dependency-free. Features that require external tools or package management will not be accepted.</p>
+        <p>Planned additions include structured colour reference and component examples — these will follow the same file-per-page, flat-directory pattern.</p>
+      </div>
+
+      <div class="nav-links">
+        <a href="index.html" class="btn-outlined">&larr; Back Home</a>
+        <a href="source.html" class="btn-outlined">&larr; Source</a>
       </div>
     </section>
   </main>
@@ -68,6 +91,10 @@
     <a href="index.html" class="nav-item">
       <span class="material-symbols-outlined">home</span>
       <span class="label-sm">Home</span>
+    </a>
+    <a href="vfp.html" class="nav-item">
+      <span class="material-symbols-outlined">text_fields</span>
+      <span class="label-sm">VFP</span>
     </a>
     <a href="guide.html" class="nav-item">
       <span class="material-symbols-outlined">menu_book</span>
